@@ -1,0 +1,165 @@
+{
+    "type": "object",
+    "properties": {
+        "tambah_kejadian": {
+            "type": "object",
+            "properties": {
+                "nama_kejadian": {"type": "string"},
+                "tanggal_waktu_kejadian_terjadi": {"type": "string", "format": "date-time"},
+                "tanggal_waktu_kejadian_berakhir": {"type": "string", "format": "date-time"},
+                "jenis_bencana": {"type": "string"},
+                "kronologi": {"type": "string"},
+                "peringatan_dini": {"type": "string"},
+                "sebab_kejadian": {"type": "string"},
+                "deskripsi": {"type": "string"},
+                "sebaran_dampak_kec": {"type": "string"},
+                "sebaran_dampak_ds_kel": {"type": "string"},
+                "gambar": {"type": "string", "description": "Field input untuk mengunggah gambar."}
+            }
+        },
+        "detail_kejadian": {
+            "type": "object",
+            "properties": {
+                "tambah_informasi_terkini": {
+                    "type": "object",
+                    "properties": {
+                        "btn_tambah_informasi_terkini": {"type": "string"},
+                        "sumber_informasi": {"type": "string"},
+                        "kondisi_mutakhir_dropdown": {"type": "string"},
+                        "kondisi_mutakhir_deskripsi": {"type": "string"},
+                        "upaya_penanganan": {"type": "string"},
+                        "kendala_lapangan": {"type": "string"},
+                        "informasi_tambahan": {"type": "string"}
+                    }
+                },
+                "kelola_dampak_terkini": {
+                    "type": "object",
+                    "properties": {
+                        "btn_kelola_dampak_terkini": {"type": "string"},
+                        "tambah_korban_jiwa": {
+                            "type": "object",
+                            "properties": {
+                                "btn_tambah_korban_jiwa": {"type": "string"},
+                                "dampak_kecamatan": {"type": "string"},
+                                "dampak_ds_kelurahan": {"type": "string"},
+                                "dampak_tgl_waktu": {"type": "string", "format": "date-time"},
+                                "total_kk": {"type": "integer"},
+                                "terdampak_orang": {"type": "integer"},
+                                "meninggal_orang": {"type": "integer"},
+                                "hilang_orang": {"type": "integer"},
+                                "luka_ringan_orang": {"type": "integer"},
+                                "luka_berat_orang": {"type": "integer"},
+                                "mengungsi_orang": {"type": "integer"},
+                                "titik_pengungsian": {"type": "string"},
+                                "btn_simpan_korban_jiwa": {"type": "string"}
+                            }
+                        },
+                        "tambah_kerusakan_dan_kerugian": {
+                            "type": "object",
+                            "properties": {
+                                "btn_tambah_kerusakan_kerugian": {"type": "string"},
+                                "kerusakan_kerugian_kecamatan": {"type": "string"},
+                                "kerusakan_kerugian_ds_kelurahan": {"type": "string"},
+                                "kerusakan_kerugian_tgl_waktu": {"type": "string", "format": "date-time"},
+                                "kategori": {
+                                    "type": "object",
+                                    "properties": {
+                                        "rumah": {
+                                            "type": "object",
+                                            "properties": {
+                                                "rusak_rumah_rusak_ringan": {"type": "integer"},
+                                                "rusak_rumah_rusak_sedang": {"type": "integer"},
+                                                "rusak_rumah_rusak_berat": {"type": "integer"},
+                                                "rusak_rumah_rusak_terendam": {"type": "integer"},
+                                                "rugi_rumah": {"type": "integer"}
+                                            }
+                                        },
+                                        "rumah_ibadah": {
+                                            "type": "object",
+                                            "properties": {
+                                                "rusak_ibadah_rusak_ringan": {"type": "integer"},
+                                                "rusak_ibadah_rusak_sedang": {"type": "integer"},
+                                                "rusak_ibadah_rusak_berat": {"type": "integer"},
+                                                "rusak_ibadah_rusak_terendam": {"type": "integer"},
+                                                "rugi_ibadah": {"type": "integer"}
+                                            }
+                                        },
+                                        "fasilitas_pendidikan": {
+                                            "type": "object",
+                                            "properties": {
+                                                "rusak_pendidikan_rusak_ringan": {"type": "integer"},
+                                                "rusak_pendidikan_rusak_sedang": {"type": "integer"},
+                                                "rusak_pendidikan_rusak_berat": {"type": "integer"},
+                                                "rusak_pendidikan_rusak_terendam": {"type": "integer"},
+                                                "rugi_pendidikan": {"type": "integer"}
+                                            }
+                                        },
+                                        "fasilitas_umum": {
+                                            "type": "object",
+                                            "properties": {
+                                                "rusak_umum_rusak_ringan": {"type": "integer"},
+                                                "rusak_umum_rusak_sedang": {"type": "integer"},
+                                                "rusak_umum_rusak_berat": {"type": "integer"},
+                                                "rusak_umum_rusak_terendam": {"type": "integer"},
+                                                "rugi_umum": {"type": "integer"}
+                                            }
+                                        },
+                                        "jalan_km": {
+                                            "type": "object",
+                                            "properties": {
+                                                "rusak_jalan_rusak_ringan": {"type": "integer"},
+                                                "rusak_jalan_rusak_sedang": {"type": "integer"},
+                                                "rusak_jalan_rusak_berat": {"type": "integer"},
+                                                "rusak_jalan_rusak_terendam": {"type": "integer"},
+                                                "rugi_jalan": {"type": "integer"}
+                                            }
+                                        },
+                                        "jembatan": {
+                                            "type": "object",
+                                            "properties": {
+                                                "rusak_jembatan_rusak_ringan": {"type": "integer"},
+                                                "rusak_jembatan_rusak_sedang": {"type": "integer"},
+                                                "rusak_jembatan_rusak_berat": {"type": "integer"},
+                                                "rusak_jembatan_rusak_terendam": {"type": "integer"},
+                                                "rugi_jembatan": {"type": "integer"}
+                                            }
+                                        },
+                                        "lahan_persawahan_ha": {
+                                            "type": "object",
+                                            "properties": {
+                                                "rusak_sawah_rusak_ringan": {"type": "number"},
+                                                "rusak_sawah_rusak_sedang": {"type": "number"},
+                                                "rusak_sawah_rusak_berat": {"type": "number"},
+                                                "rusak_sawah_rusak_terendam": {"type": "number"},
+                                                "rugi_sawah": {"type": "integer"}
+                                            }
+                                        },
+                                        "lahan_perkebunan_ha": {
+                                            "type": "object",
+                                            "properties": {
+                                                "rusak_kebun_rusak_ringan": {"type": "number"},
+                                                "rusak_kebun_rusak_sedang": {"type": "number"},
+                                                "rusak_kebun_rusak_berat": {"type": "number"},
+                                                "rusak_kebun_rusak_terendam": {"type": "number"},
+                                                "rugi_kebun": {"type": "integer"}
+                                            }
+                                        },
+                                        "hewan_ternak": {
+                                            "type": "object",
+                                            "properties": {
+                                                "total_hewan": {"type": "integer"},
+                                                "rugi_hewan": {"type": "integer"}
+                                            }
+                                        }
+                                    }
+                                },
+                                "kerugian_total": {"type": "integer"},
+                                "btn_simpan_dampak_terkini": {"type": "string"}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
