@@ -23,7 +23,6 @@
                 "tambah_informasi_terkini": {
                     "type": "object",
                     "properties": {
-                        "btn_tambah_informasi_terkini": {"type": "string"},
                         "sumber_informasi": {"type": "string"},
                         "kondisi_mutakhir_dropdown": {"type": "string"},
                         "kondisi_mutakhir_deskripsi": {"type": "string"},
@@ -35,11 +34,9 @@
                 "kelola_dampak_terkini": {
                     "type": "object",
                     "properties": {
-                        "btn_kelola_dampak_terkini": {"type": "string"},
                         "tambah_korban_jiwa": {
                             "type": "object",
                             "properties": {
-                                "btn_tambah_korban_jiwa": {"type": "string"},
                                 "dampak_kecamatan": {"type": "string"},
                                 "dampak_ds_kelurahan": {"type": "string"},
                                 "dampak_tgl_waktu": {"type": "string", "format": "date-time"},
@@ -50,14 +47,12 @@
                                 "luka_ringan_orang": {"type": "integer"},
                                 "luka_berat_orang": {"type": "integer"},
                                 "mengungsi_orang": {"type": "integer"},
-                                "titik_pengungsian": {"type": "string"},
-                                "btn_simpan_korban_jiwa": {"type": "string"}
+                                "titik_pengungsian": {"type": "string"}
                             }
                         },
                         "tambah_kerusakan_dan_kerugian": {
                             "type": "object",
                             "properties": {
-                                "btn_tambah_kerusakan_kerugian": {"type": "string"},
                                 "kerusakan_kerugian_kecamatan": {"type": "string"},
                                 "kerusakan_kerugian_ds_kelurahan": {"type": "string"},
                                 "kerusakan_kerugian_tgl_waktu": {"type": "string", "format": "date-time"},
@@ -153,8 +148,7 @@
                                         }
                                     }
                                 },
-                                "kerugian_total": {"type": "integer"},
-                                "btn_simpan_dampak_terkini": {"type": "string"}
+                                "kerugian_total": {"type": "integer"}
                             }
                         }
                     }
