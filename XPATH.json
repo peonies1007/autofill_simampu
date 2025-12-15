@@ -1,0 +1,354 @@
+{
+  "tambah_kejadian": {
+    "nama_kejadian": {
+      "name": "nama_kejadian",
+      "XPATH": "//*[@id=\"content-container\"]/div[3]/div/div/div/div/div/div/div/div/div/form/div[1]/div[1]/div/div/input"
+    },
+    "tanggal_waktu_kejadian_terjadi": {
+      "name": "tanggal_waktu_kejadian_terjadi",
+      "XPATH": "//*[@id=\"content-container\"]/div[3]/div/div/div/div/div/div/div/div/div/form/div[2]/div[1]/div/div/div/div/input"
+    },
+    "tanggal_waktu_kejadian_berakhir": {
+      "name": "tanggal_waktu_kejadian_berakhir",
+      "XPATH": "//*[@id=\"content-container\"]/div[3]/div/div/div/div/div/div/div/div/div/form/div[2]/div[2]/div/div/div/div/input"
+    },
+    "jenis_bencana": {
+      "name": "jenis_bencana",
+      "XPATH": "//*[@id=\"content-container\"]/div[3]/div/div/div/div/div/div/div/div/div/form/div[3]/div[1]/div[4]/div[1]/div/div/div/div/div/input"
+    },
+    "kronologi": {
+      "name": "kronologi",
+      "XPATH": "//*[@id=\"content-container\"]/div[3]/div/div/div/div/div/div/div/div/div/form/div[4]/div/div/div/div[1]"
+    },
+    "peringatan_dini": {
+      "name": "peringatan_dini",
+      "XPATH": "//*[@id=\"content-container\"]/div[3]/div/div/div/div/div/div/div/div/div/form/div[6]/div/div/div/div[1]"
+    },
+    "sebab_kejadian": {
+      "name": "sebab_kejadian",
+      "XPATH": "//*[@id=\"content-container\"]/div[3]/div/div/div/div/div/div/div/div/div/form/div[8]/div/div/div/div[1]"
+    },
+    "deskripsi": {
+      "name": "deskripsi",
+      "XPATH": "//*[@id=\"content-container\"]/div[3]/div/div/div/div/div/div/div/div/div/form/div[10]/div/div/div/div[1]"
+    },
+    "sebaran_dampak_kec": {
+      "name": "sebaran_dampak_kec",
+      "XPATH": "//*[@id=\"content-container\"]/div[3]/div/div/div/div/div/div/div/div/div/form/div[12]/div[1]/div/div[1]/div[1]/div/input"
+    },
+    "sebaran_dampak_ds_kel": {
+      "name": "sebaran_dampak_ds_kel",
+      "XPATH": "//*[@id=\"content-container\"]/div[3]/div/div/div/div/div/div/div/div/div/form/div[12]/div[2]/div/div[1]/div[1]/div/input"
+    },
+    "gambar": {
+      "name": "gambar",
+      "XPATH": "//*[@id=\"content-container\"]/div[3]/div/div/div/div/div/div/div/div/div/form/div[13]/div[1]/div/div/div/div"
+    }
+  },
+  "detail_kejadian": {
+    "tambah_informasi_terkini": {
+      "btn_tambah_informasi_terkini": {
+        "name": "btn_tambah_informasi_terkini",
+        "XPATH": "//*[@id=\"content-container\"]/div[3]/div/section[1]/div/div/div/div[1]/button"
+      },
+      "sumber_informasi": {
+        "name": "sumber_informasi",
+        "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[3]/div/div/input"
+      },
+      "kondisi_mutakhir_dropdown": {
+        "name": "kondisi_mutakhir_dropdown",
+        "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[5]/div/div/div/div/input"
+      },
+      "kondisi_mutakhir_deskripsi": {
+        "name": "kondisi_mutakhir_deskripsi",
+        "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[7]/div/div/div/div[1]"
+      },
+      "upaya_penanganan": {
+        "name": "upaya_penanganan",
+        "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[9]/div/div/div/div[1]"
+      },
+      "kendala_lapangan": {
+        "name": "kendala_lapangan",
+        "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[13]/div/div/div/div[1]"
+      },
+      "informasi_tambahan": {
+        "name": "informasi_tambahan",
+        "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[15]/div/div/div/div[1]"
+      }
+    },
+    "kelola_dampak_terkini": {
+      "btn_kelola_dampak_terkini": {
+        "name": "btn_kelola_dampak_terkini",
+        "XPATH": "//*[@id=\"content-container\"]/div[3]/div/section[3]/div/div/div/div[1]/a/button"
+      },
+      "tambah_korban_jiwa": {
+        "btn_tambah_korban_jiwa": {
+          "name": "btn_tambah_korban_jiwa",
+          "XPATH": "//*[@id=\"content-container\"]/div[3]/div[2]/div[1]/div/div/div[1]/button"
+        },
+        "dampak_kecamatan": {
+          "name": "dampak_kecamatan",
+          "XPATH": "/html/body/div[2]/div[2]/div/div/div/div/div[2]/div[1]/div/div/div/div/input"
+        },
+        "dampak_ds_kelurahan": {
+          "name": "dampak_ds_kelurahan",
+          "XPATH": "/html/body/div[2]/div[2]/div/div/div/div/div[2]/div[2]/div/div/div/div/input"
+        },
+        "dampak_tgl_waktu": {
+          "name": "dampak_tgl_waktu",
+          "XPATH": "/html/body/div[2]/div[2]/div/div/div/div/div[2]/div[3]/div/div/div/input"
+        },
+        "total_kk": {
+          "name": "total_kk",
+          "XPATH": "/html/body/div[2]/div[2]/div/div/div/div/div[3]/form/div/div/div[1]/div/div/div[1]/input"
+        },
+        "terdampak_orang": {
+          "name": "terdampak_orang",
+          "XPATH": "/html/body/div[2]/div[2]/div/div/div/div/div[3]/form/div/div/div[2]/div/div/div[1]/input"
+        },
+        "meninggal_orang": {
+          "name": "meninggal_orang",
+          "XPATH": "/html/body/div[2]/div[2]/div/div/div/div/div[3]/form/div/div/div[3]/div/div/div[1]/input"
+        },
+        "hilang_orang": {
+          "name": "hilang_orang",
+          "XPATH": "/html/body/div[2]/div[2]/div/div/div/div/div[3]/form/div/div/div[4]/div/div/div[1]/input"
+        },
+        "luka_ringan_orang": {
+          "name": "luka_ringan_orang",
+          "XPATH": "/html/body/div[2]/div[2]/div/div/div/div/div[3]/form/div/div/div[5]/div/div/div[1]/input"
+        },
+        "luka_berat_orang": {
+          "name": "luka_berat_orang",
+          "XPATH": "/html/body/div[2]/div[2]/div/div/div/div/div[3]/form/div/div/div[6]/div/div/div[1]/input"
+        },
+        "mengungsi_orang": {
+          "name": "mengungsi_orang",
+          "XPATH": "/html/body/div[2]/div[2]/div/div/div/div/div[3]/form/div/div/div[7]/div/div/div[1]/input"
+        },
+        "titik_pengungsian": {
+          "name": "titik_pengungsian",
+          "XPATH": "/html/body/div[2]/div[2]/div/div/div/div/div[3]/form/div/div/div[8]/div/div/div[1]/input"
+        },
+        "btn_simpan_korban_jiwa": {
+          "name": "btn_simpan_korban_jiwa",
+          "XPATH": "/html/body/div[2]/div[2]/div/div/div/div/div[3]/form/button"
+        }
+      },
+      "tambah_kerusakan_dan_kerugian": {
+        "btn_tambah_kerusakan_kerugian": {
+          "name": "btn_tambah_kerusakan_kerugian",
+          "XPATH": "//*[@id=\"content-container\"]/div[3]/div[2]/div[2]/div/div/div[1]/button"
+        },
+        "kerusakan_kerugian_kecamatan": {
+          "name": "kerusakan_kerugian_kecamatan",
+          "XPATH": "/html/body/div[2]/div[2]/div/div/div/div/div[1]/div/div/div/div/input"
+        },
+        "kerusakan_kerugian_ds_kelurahan": {
+          "name": "kerusakan_kerugian_ds_kelurahan",
+          "XPATH": "/html/body/div[2]/div[2]/div/div/div/div/div[2]/div/div/div/div/input"
+        },
+        "kerusakan_kerugian_tgl_waktu": {
+          "name": "kerusakan_kerugian_tgl_waktu",
+          "XPATH": "/html/body/div[2]/div[2]/div/div/div/div/div[3]/div/div/div/input"
+        },
+        "kategori": {
+          "rumah": {
+            "rusak_rumah_rusak_ringan": {
+              "name": "rusak_rumah_rusak_ringan",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[1]/div/div[1]/div/div/div[1]/input"
+            },
+            "rusak_rumah_rusak_sedang": {
+              "name": "rusak_rumah_rusak_sedang",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[1]/div/div[2]/div/div/div[1]/input"
+            },
+            "rusak_rumah_rusak_berat": {
+              "name": "rusak_rumah_rusak_berat",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[1]/div/div[3]/div/div/div[1]/input"
+            },
+            "rusak_rumah_rusak_terendam": {
+              "name": "rusak_rumah_rusak_terendam",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[1]/div/div[4]/div/div/div[1]/input"
+            },
+            "rugi_rumah": {
+              "name": "rugi_rumah",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[1]/div/div[6]/div/div/div[1]/input"
+            }
+          },
+          "rumah_ibadah": {
+            "rusak_ibadah_rusak_ringan": {
+              "name": "rusak_ibadah_rusak_ringan",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[2]/div/div[1]/div/div/div[1]/input"
+            },
+            "rusak_ibadah_rusak_sedang": {
+              "name": "rusak_ibadah_rusak_sedang",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[2]/div/div[2]/div/div/div[1]/input"
+            },
+            "rusak_ibadah_rusak_berat": {
+              "name": "rusak_ibadah_rusak_berat",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[2]/div/div[3]/div/div/div[1]/input"
+            },
+            "rusak_ibadah_rusak_terendam": {
+              "name": "rusak_ibadah_rusak_terendam",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[2]/div/div[4]/div/div/div[1]/input"
+            },
+            "rugi_ibadah": {
+              "name": "rugi_ibadah",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[2]/div/div[6]/div/div/div[1]/input"
+            }
+          },
+          "fasilitas_pendidikan": {
+            "rusak_pendidikan_rusak_ringan": {
+              "name": "rusak_pendidikan_rusak_ringan",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[3]/div/div[1]/div/div/div[1]/input"
+            },
+            "rusak_pendidikan_rusak_sedang": {
+              "name": "rusak_pendidikan_rusak_sedang",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[3]/div/div[2]/div/div/div[1]/input"
+            },
+            "rusak_pendidikan_rusak_berat": {
+              "name": "rusak_pendidikan_rusak_berat",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[3]/div/div[3]/div/div/div[1]/input"
+            },
+            "rusak_pendidikan_rusak_terendam": {
+              "name": "rusak_pendidikan_rusak_terendam",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[3]/div/div[4]/div/div/div[1]/input"
+            },
+            "rugi_pendidikan": {
+              "name": "rugi_pendidikan",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[3]/div/div[6]/div/div/div[1]/input"
+            }
+          },
+          "fasilitas_umum": {
+            "rusak_umum_rusak_ringan": {
+              "name": "rusak_umum_rusak_ringan",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[5]/div/div[1]/div/div/div[1]/input"
+            },
+            "rusak_umum_rusak_sedang": {
+              "name": "rusak_umum_rusak_sedang",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[5]/div/div[2]/div/div/div[1]/input"
+            },
+            "rusak_umum_rusak_berat": {
+              "name": "rusak_umum_rusak_berat",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[5]/div/div[3]/div/div/div[1]/input"
+            },
+            "rusak_umum_rusak_terendam": {
+              "name": "rusak_umum_rusak_terendam",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[5]/div/div[4]/div/div/div[1]/input"
+            },
+            "rugi_umum": {
+              "name": "rugi_umum",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[5]/div/div[6]/div/div/div[1]/input"
+            }
+          },
+          "jalan_km": {
+            "rusak_jalan_rusak_ringan": {
+              "name": "rusak_jalan_rusak_ringan",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[9]/div/div[1]/div/div/div[1]/input"
+            },
+            "rusak_jalan_rusak_sedang": {
+              "name": "rusak_jalan_rusak_sedang",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[9]/div/div[2]/div/div/div[1]/input"
+            },
+            "rusak_jalan_rusak_berat": {
+              "name": "rusak_jalan_rusak_berat",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[9]/div/div[3]/div/div/div[1]/input"
+            },
+            "rusak_jalan_rusak_terendam": {
+              "name": "rusak_jalan_rusak_terendam",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[9]/div/div[4]/div/div/div[1]/input"
+            },
+            "rugi_jalan": {
+              "name": "rugi_jalan",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[9]/div/div[1]/div/div/div[6]/input"
+            }
+          },
+          "jembatan": {
+            "rusak_jembatan_rusak_ringan": {
+              "name": "rusak_jembatan_rusak_ringan",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[10]/div/div[1]/div/div/div[1]/input"
+            },
+            "rusak_jembatan_rusak_sedang": {
+              "name": "rusak_jembatan_rusak_sedang",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[10]/div/div[2]/div/div/div[1]/input"
+            },
+            "rusak_jembatan_rusak_berat": {
+              "name": "rusak_jembatan_rusak_berat",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[10]/div/div[3]/div/div/div[1]/input"
+            },
+            "rusak_jembatan_rusak_terendam": {
+              "name": "rusak_jembatan_rusak_terendam",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[10]/div/div[4]/div/div/div[1]/input"
+            },
+            "rugi_jembatan": {
+              "name": "rugi_jembatan",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[10]/div/div[6]/div/div/div[1]/input"
+            }
+          },
+          "lahan_persawahan_ha": {
+            "rusak_sawah_rusak_ringan": {
+              "name": "rusak_sawah_rusak_ringan",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[13]/div/div[1]/div/div/div[1]/input"
+            },
+            "rusak_sawah_rusak_sedang": {
+              "name": "rusak_sawah_rusak_sedang",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[13]/div/div[2]/div/div/div[1]/input"
+            },
+            "rusak_sawah_rusak_berat": {
+              "name": "rusak_sawah_rusak_berat",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[13]/div/div[3]/div/div/div[1]/input"
+            },
+            "rusak_sawah_rusak_terendam": {
+              "name": "rusak_sawah_rusak_terendam",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[13]/div/div[4]/div/div/div[1]/input"
+            },
+            "rugi_sawah": {
+              "name": "rugi_sawah",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[13]/div/div[6]/div/div/div[1]/input"
+            }
+          },
+          "lahan_perkebunan_ha": {
+            "rusak_kebun_rusak_ringan": {
+              "name": "rusak_kebun_rusak_ringan",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[14]/div/div[1]/div/div/div[1]/input"
+            },
+            "rusak_kebun_rusak_sedang": {
+              "name": "rusak_kebun_rusak_sedang",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[14]/div/div[2]/div/div/div[1]/input"
+            },
+            "rusak_kebun_rusak_berat": {
+              "name": "rusak_kebun_rusak_berat",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[14]/div/div[3]/div/div/div[1]/input"
+            },
+            "rusak_kebun_rusak_terendam": {
+              "name": "rusak_kebun_rusak_terendam",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[14]/div/div[4]/div/div/div[1]/input"
+            },
+            "rugi_kebun": {
+              "name": "rugi_kebun",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[14]/div/div[6]/div/div/div[1]/input"
+            }
+          },
+          "hewan_ternak": {
+            "total_hewan": {
+              "name": "total_hewan",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[15]/div/div[1]/div/div/div[1]/input"
+            },
+            "rugi_hewan": {
+              "name": "rugi_hewan",
+              "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[15]/div/div[2]/div/div/div[1]/input"
+            }
+          }
+        },
+        "kerugian_total": {
+          "name": "kerugian_total",
+          "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/div[17]/div/div/div/div/div[1]/input"
+        },
+        "btn_simpan_dampak_terkini": {
+          "name": "btn_simpan_dampak_terkini",
+          "XPATH": "/html/body/div[2]/div[2]/div/div/div/form/button"
+        }
+      }
+    }
+  }
+}
