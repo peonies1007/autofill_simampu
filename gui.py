@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
+from gemini_process import extract_laporan
 
 # from tkinter import ttk
 from tkinter import scrolledtext
@@ -14,8 +15,8 @@ def select_all_text(event):
 
 
 def show_info():
-    print(laporan.get("1.0", "end-1c"))
-    messagebox.showinfo("judul", laporan.get("1.0", "end-1c"))
+    result_extract_laporan = extract_laporan(laporan_textbox.get("1.0", "end-1c"))
+    messagebox.showinfo("judul", result_extract_laporan)
 
 
 tk.Label(
@@ -23,16 +24,16 @@ tk.Label(
     text="Laporan:",
 ).grid(row=0, column=0, padx=5, pady=5)
 
-laporan = scrolledtext.ScrolledText(root, width=50, height=30)
-laporan.grid(row=1, column=0, padx=5, pady=5)
+laporan_textbox = scrolledtext.ScrolledText(root, width=50, height=30)
+laporan_textbox.grid(row=1, column=0, padx=5, pady=5)
 
 
 tk.Button(root, text="Submit", width=10, height=3, command=show_info).grid(
     row=2, column=0, pady=5
 )
 
-laporan.bind("<Control-a>", select_all_text)
-laporan.bind("<Control-A>", select_all_text)
-laporan.bind("<Command-a >", select_all_text)
+laporan_textbox.bind("<Control-a>", select_all_text)
+laporan_textbox.bind("<Control-A>", select_all_text)
+laporan_textbox.bind("<Command-a >", select_all_text)
 
 root.mainloop()

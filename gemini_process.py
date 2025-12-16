@@ -1,4 +1,4 @@
-import google.generativeai as genai  # type: ignore # noqa: F811
+import google.generativeai as genai
 import json
 import os
 
@@ -8,7 +8,7 @@ os.environ["GOOGLE_API_KEY"] = "AIzaSyChPEIsWYdbqxyFuacQ245ANVbBH4b63ws"
 genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 
 
-def extract_report_with_strict_schema(text_laporan):
+def extract_laporan(text_laporan):
     with open("scheme.json", "r") as file:
         # Use json.load() to convert the file content to a Python object (dictionary)
         data = json.load(file)
@@ -36,8 +36,18 @@ def extract_report_with_strict_schema(text_laporan):
 
     response = model.generate_content(prompt)
 
-    # Mengembalikan hasil sebagai object Python (Dictionary)
-    return json.loads(response.text)
+    try:
+        # Panggil fungsi
+        json_output = json.loads(response.text)
+
+        # Print hasil JSON dengan indentasi agar mudah dibaca
+        print("✅ **OUTPUT JSON DENGAN STRUKTUR KETAT** ✅")
+        print("---")
+        print(json.dumps(json_output, indent=4, ensure_ascii=False))
+        return json.loads(response.text)
+
+    except Exception as e:
+        print(f"Terjadi kesalahan: {e}")
 
 
 # --- Data Input (Sesuai yang Anda berikan) ---
@@ -98,17 +108,3 @@ P.    PUSDALOP BPBD Kab. Sragen
 1.     Darmono
 2.     Janu Saputro
 """
-
-# --- Eksekusi ---
-if __name__ == "__main__":
-    try:
-        # Panggil fungsi
-        json_output = extract_report_with_strict_schema(laporan_raw)
-
-        # Print hasil JSON dengan indentasi agar mudah dibaca
-        print("✅ **OUTPUT JSON DENGAN STRUKTUR KETAT** ✅")
-        print("---")
-        print(json.dumps(json_output, indent=4, ensure_ascii=False))
-
-    except Exception as e:
-        print(f"Terjadi kesalahan: {e}")
