@@ -6,6 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.keys import Keys
 
 
 def script_input_tanggal(driver, element, tanggal):
@@ -66,7 +67,7 @@ def isi_form_bpbd_sragen(data_obj):
     try:
         print(f"🔗 Terhubung ke: {driver.title}")
         print("⏳ Memulai pengisian dengan delay 0.5 detik...")
-        print(data_obj)
+        # print(data_obj)
         # --- A. Mengisi Input Fields (Tipe Input Teks) ---
         all_fields = [
             "nama_kejadian",
@@ -94,32 +95,84 @@ def isi_form_bpbd_sragen(data_obj):
             "tanggal_waktu_kejadian_berakhir",
         ]
 
+        sebaran_dampak = [
+            "sebaran_dampak_kec",
+            "sebaran_dampak_ds_kel",
+        ]
+
         # 2. Gunakan JAVASCRIPT untuk memaksa masuknya nilai
         # Ini akan menimpa batasan 'readonly' dan menghindari munculnya kalender
 
         for key in all_fields:
-            if key in data_obj:
-                # SEMUA menggunakan EC.element_to_be_clickable
-                element = wait.until(
-                    EC.element_to_be_clickable((By.XPATH, xpath_map[key]))
+            # SEMUA menggunakan EC.element_to_be_clickable
+            element = wait.until(EC.element_to_be_clickable((By.XPATH, xpath_map[key])))
+
+            if key in div_type_fields:
+                # Input untuk elemen DIV (Rich Text)
+                driver.execute_script(
+                    "arguments[0].innerText = arguments[1];", element, data_obj[key]
                 )
-
-                if key in div_type_fields:
-                    # Input untuk elemen DIV (Rich Text)
-                    driver.execute_script(
-                        "arguments[0].innerText = arguments[1];", element, data_obj[key]
+                print(f"✅ Berhasil isi DIV: {key}")
+            elif key in tanggal_field:
+                script_input_tanggal(driver, element, data_obj[key])
+                element.click()
+                wait.until(
+                    EC.element_to_be_clickable((By.XPATH, "//button[text()='Save']"))
+                ).click()
+            elif key == "jenis_bencana":
+                element.clear()
+                element.send_keys(data_obj[key])
+                wait.until(
+                    EC.element_to_be_clickable(
+                        (
+                            By.XPATH,
+                            '//*[@id="content-container"]/div[3]/div/div/div/div/div/div/div/div/div/form/div[3]/div[1]/div[4]/div[2]/button',
+                        )
                     )
-                    print(f"✅ Berhasil isi DIV: {key}")
-                elif key in tanggal_field:
-                    script_input_tanggal(driver, element, data_obj[key])
-                else:
-                    # Input untuk elemen <input> biasa
-                    element.clear()
-                    element.send_keys(data_obj[key])
-                    print(f"✅ Berhasil isi INPUT: {key}")
-
-                # Delay 0.5 detik sesuai permintaan
+                ).click()
                 time.sleep(0.5)
+                wait.until(
+                    EC.invisibility_of_element_located(
+                        (By.CSS_SELECTOR, "sb-oveflow-hidden")
+                    )
+                )
+            elif key in sebaran_dampak:
+                # 2. Klik untuk mengaktifkan dropdown
+                element.click()
+                time.sleep(0.5)
+
+                # 3. Ketikkan nama kecamatan/desa
+                # Gunakan CONTROL + A dan BACKSPACE untuk membersihkan jika clear() tidak bekerja
+                element.send_keys(Keys.CONTROL + "a")
+                element.send_keys(Keys.BACKSPACE)
+                element.send_keys(data_obj[key])
+
+                try:
+                    # Cari item yang teksnya pas, lalu klik
+                    wait.until(
+                        EC.visibility_of_element_located(
+                            (By.XPATH, f"//li[.//text()='{data_obj[key]}']")
+                        )
+                    ).click()
+                    time.sleep(0.5)
+                    print(f"✅ Berhasil memilih (Eksak): {data_obj[key]}")
+                except:
+                    # Jika tidak ketemu teks eksak, coba gunakan simulasi ENTER sebagai cadangan
+                    print(
+                        f"⚠️ Teks eksak tidak ditemukan, mencoba ENTER untuk: {data_obj[key]}"
+                    )
+                    element.send_keys(Keys.ENTER)
+
+                print(f"✅ Dropdown {key} berhasil diisi.")
+                time.sleep(0.5)
+            else:
+                # Input untuk elemen <input> biasa
+                element.clear()
+                element.send_keys(data_obj[key])
+                print(f"✅ Berhasil isi INPUT: {key}")
+
+            # Delay 0.5 detik sesuai permintaan
+            time.sleep(0.5)
 
         print("\n✨ Proses selesai! Semua kolom telah terisi.")
 
