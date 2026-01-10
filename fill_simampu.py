@@ -7,35 +7,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys
-
-
-def script_input_tanggal(driver, element, tanggal):
-    try:
-        driver.execute_script(
-            """
-        var el = arguments[0];
-        var val = arguments[1];
-        
-        // 1. Coba isi sebagai Input
-        el.value = val;
-        
-        // 2. Coba isi sebagai DIV/SPAN (Rich Text)
-        el.innerText = val;
-        
-        // 3. Paksa atribut value di HTML
-        el.setAttribute('value', val);
-        
-        // 4. Trigger event agar website tahu ada perubahan data
-        el.dispatchEvent(new Event('input', { bubbles: true }));
-        el.dispatchEvent(new Event('change', { bubbles: true }));
-        el.dispatchEvent(new Event('blur', { bubbles: true }));
-    """,
-            element,
-            tanggal,
-        )
-
-    except Exception as e:
-        print(e)
+import sys
+from delete_data_dump import delete_data_dump
+from select_date import select_date
 
 
 def isi_form_bpbd_sragen(data_obj):
@@ -46,6 +20,9 @@ def isi_form_bpbd_sragen(data_obj):
     driver = webdriver.Chrome(
         service=Service(ChromeDriverManager().install()), options=chrome_options
     )
+
+    delete_data_dump(driver)
+    # sys.exit(0)
     # 2. Buka URL Target (Ganti dengan URL formulir Anda)
     driver.get("https://simampu.bnpb.go.id/de/events_disaster_create")
     print("🚀 Membuka halaman formulir...")
@@ -62,6 +39,7 @@ def isi_form_bpbd_sragen(data_obj):
         "deskripsi": '//*[@id="content-container"]/div[3]/div/div/div/div/div/div/div/div/div/form/div[10]/div/div/div/div[1]',
         "sebaran_dampak_kec": '//*[@id="content-container"]/div[3]/div/div/div/div/div/div/div/div/div/form/div[12]/div[1]/div/div[1]/div[1]/div/input',
         "sebaran_dampak_ds_kel": '//*[@id="content-container"]/div[3]/div/div/div/div/div/div/div/div/div/form/div[12]/div[2]/div/div[1]/div[1]/div/input',
+        "simpan_tambah_kejadian": "//*[@id='content-container']/div[3]/div/div/div/div/div/div/div/div/div/form/div[14]/button",
     }
 
     try:
@@ -114,20 +92,14 @@ def isi_form_bpbd_sragen(data_obj):
                 )
                 print(f"✅ Berhasil isi DIV: {key}")
             elif key in tanggal_field:
-                script_input_tanggal(driver, element, data_obj[key])
-                element.click()
-                wait.until(
-                    EC.element_to_be_clickable((By.XPATH, "//button[text()='Save']"))
-                ).click()
+                select_date(driver, data_obj[key], xpath_map[key])
             elif key == "jenis_bencana":
                 element.clear()
-                element.send_keys(data_obj[key])
+                element.click()
+                # print(data_obj[key])
                 wait.until(
-                    EC.element_to_be_clickable(
-                        (
-                            By.XPATH,
-                            '//*[@id="content-container"]/div[3]/div/div/div/div/div/div/div/div/div/form/div[3]/div[1]/div[4]/div[2]/button',
-                        )
+                    EC.visibility_of_element_located(
+                        (By.XPATH, f"//span[text()='{data_obj[key]}']")
                     )
                 ).click()
                 time.sleep(0.5)
@@ -139,14 +111,6 @@ def isi_form_bpbd_sragen(data_obj):
             elif key in sebaran_dampak:
                 # 2. Klik untuk mengaktifkan dropdown
                 element.click()
-                time.sleep(0.5)
-
-                # 3. Ketikkan nama kecamatan/desa
-                # Gunakan CONTROL + A dan BACKSPACE untuk membersihkan jika clear() tidak bekerja
-                element.send_keys(Keys.CONTROL + "a")
-                element.send_keys(Keys.BACKSPACE)
-                element.send_keys(data_obj[key])
-
                 try:
                     # Cari item yang teksnya pas, lalu klik
                     wait.until(
@@ -173,12 +137,10 @@ def isi_form_bpbd_sragen(data_obj):
 
             # Delay 0.5 detik sesuai permintaan
             time.sleep(0.5)
-
         print("\n✨ Proses selesai! Semua kolom telah terisi.")
+        wait.until(
+            EC.element_to_be_clickable((By.XPATH, xpath_map["simpan_tambah_kejadian"]))
+        ).click()
 
     except Exception as e:
         print(f"❌ Error: {e}")
-
-
-# Contoh pemanggilan (Gunakan objek kejadian hasil ekstraksi AI Anda)
-# isi_form_dengan_delay(kejadian)

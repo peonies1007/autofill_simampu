@@ -100,16 +100,16 @@ try:
     # print(f"Sebab         : {kejadian.sebab_kejadian}")
     # print(kejadian)
     kejadian = {
-        "nama_kejadian": "Angin Kencang di Kabupaten Sragen Provinsi Jawa Tengah",
-        "tanggal_waktu_kejadian_terjadi": "2026-01-06 21:42:00",
-        "tanggal_waktu_kejadian_berakhir": "2026-01-06 21:42:00",
-        "jenis_bencana": "Cuaca Ekstrim",
-        "kronologi": "Sekitar pukul 18.30 wib di wilayah Kec. Sambirejo diguyur Hujan dengan Intensitas Sedang sampai Tinggi disertai Angin kencang yang mengakibatkan Sebuah Pohon Mahoni Roboh mengganggu pengguna jalan",
+        "nama_kejadian": "Cuaca Ekstrem di Kabupaten Sragen Provinsi Jawa Tengah",
+        "tanggal_waktu_kejadian_terjadi": "2026-01-08 17:15:00",
+        "tanggal_waktu_kejadian_berakhir": "2026-01-08 18:00:00",
+        "jenis_bencana": "Cuaca Ekstrem",
+        "kronologi": "Pada Hari Kamis, 8 Januari 2026 Sekitar pukul ± 16.00 WIB wilayah Kab.Sragen Dan Sekitarnya di guyur Hujan intensitas Sedang Hingga Deras disertai angin Kencang yang Mengakibatkan  Pohon Tumbang Menutup Akses Jalan Kampung",
         "peringatan_dini": "NIHIL",
-        "sebab_kejadian": "Hujan intensitas sedang sampai tinggi disertai Angin Kencang",
-        "deskripsi": "1 Pohon jenis Mahoni Roboh berdiameter 40 cm. Membuat Akses Jalan tersendat.",
-        "sebaran_dampak_kec": "Sambirejo",
-        "sebaran_dampak_ds_kel": "Sambi",
+        "sebab_kejadian": "Hujan Disertai Angin Kencang",
+        "deskripsi": "1 Pohon jenis Jati Roboh berdiameter 20 cm. Menghalangi jalan kampung.",
+        "sebaran_dampak_kec": "Ngrampal",
+        "sebaran_dampak_ds_kel": "Bandung",
     }
     isi_form_bpbd_sragen(kejadian)
 except Exception as e:

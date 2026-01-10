@@ -43,7 +43,12 @@
     "gambar": {
       "name": "gambar",
       "XPATH": "//*[@id=\"content-container\"]/div[3]/div/div/div/div/div/div/div/div/div/form/div[13]/div[1]/div/div/div/div"
+    },
+    "simpan_tambah_kejadian": {
+      "name": "simpan_tambah_kejadian",
+      "XPATH": "//*[@id='content-container']/div[3]/div/div/div/div/div/div/div/div/div/form/div[14]/button"
     }
+
   },
   "detail_kejadian": {
     "tambah_informasi_terkini": {
