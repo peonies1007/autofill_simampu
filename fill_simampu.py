@@ -21,10 +21,10 @@ def isi_form_bpbd_sragen(data_obj):
         service=Service(ChromeDriverManager().install()), options=chrome_options
     )
 
-    delete_data_dump(driver)
+    # delete_data_dump(driver)
     # sys.exit(0)
     # 2. Buka URL Target (Ganti dengan URL formulir Anda)
-    driver.get("https://simampu.bnpb.go.id/de/events_disaster_create")
+    # driver.get("https://simampu.bnpb.go.id/de/events_disaster_create")
     print("🚀 Membuka halaman formulir...")
     wait = WebDriverWait(driver, 10)
     # 2. XPATH Map sesuai data yang Anda berikan

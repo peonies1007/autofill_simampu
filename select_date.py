@@ -86,11 +86,8 @@ def select_date(driver, date_string, xpath_date):
 
     current_wrap = f"{header_wrap}/div[@class='current']"
     xpath = {
-        "year_wrap": "/html/body/div[3]/div[@class='header']/div[@class='current']/div[@class='year']",
-        "tahun2": "/html/body/div[2]/div[5]/div[2]/div[1]",
         "tahun": f"{current_wrap}/div[@class='year']",
         "select_tahun": f"//div[@class='year-list-wrapper']/div[text()='{date_obj['year']}']",
-        "bulan2": "/html/body/div[2]/div[5]/div[2]/div[2]",
         "bulan": f"{current_wrap}/div[2]",
         "select_bulan": f"//div[@class='month-list-wrapper']/div[text()='{date_obj['month']}']",
         "tanggal": "/html/body/div[2]/div[6]/div[2]",
@@ -102,55 +99,23 @@ def select_date(driver, date_string, xpath_date):
         "select_minute": f"//div[@class='minute-list-wrapper']/div[text()='{date_obj['minute']}']",
     }
 
-    tahun = wait.until(EC.visibility_of_element_located((By.XPATH, xpath["tahun"])))
-    tahun.click()
-    print("click tahun")
-
-    select_tahun = wait.until(
-        EC.visibility_of_element_located((By.XPATH, xpath["select_tahun"]))
-    )
-    select_tahun.click()
-    print("select tahun")
-
-    bulan = wait.until(EC.visibility_of_element_located((By.XPATH, xpath["bulan"])))
-    bulan.click()
-    print("click bulan")
-
-    select_bulan = wait.until(
-        EC.visibility_of_element_located((By.XPATH, xpath["select_bulan"]))
-    )
-    select_bulan.click()
-    print("select bulan")
-
-    select_tanggal = wait.until(
-        EC.visibility_of_element_located((By.XPATH, xpath["select_tanggal"]))
-    )
-    select_tanggal.click()
-    print("select tanggal")
-
-    wait.until(EC.visibility_of_element_located((By.XPATH, xpath["time"]))).click()
-
-    hour = wait.until(EC.visibility_of_element_located((By.XPATH, xpath["hour"])))
-    hour.click()
-    print("click hour")
-
-    select_hour = wait.until(
-        EC.visibility_of_element_located((By.XPATH, xpath["select_hour"]))
-    )
-    select_hour.click()
-    print(date_obj["hour"])
-    print("select hour")
-
-    minute = wait.until(EC.visibility_of_element_located((By.XPATH, xpath["minute"])))
-    minute.click()
-    print("click minute")
-
-    select_minute = wait.until(
-        EC.visibility_of_element_located((By.XPATH, xpath["select_minute"]))
-    )
-    select_minute.click()
-    print(date_obj["minute"])
-    print("select minute")
+    field = [
+        "tahun",
+        "select_tahun",
+        "bulan",
+        "select_bulan",
+        "select_tanggal",
+        "time",
+        "hour",
+        "select_hour",
+        "minute",
+        "select_minute",
+    ]
+    for key in field:
+        element = wait.until(EC.visibility_of_element_located((By.XPATH, xpath[key])))
+        element.click()
+        print(f"click {key}")
+        time.sleep(0.2)
 
     wait.until(
         EC.element_to_be_clickable((By.XPATH, "//button[text()='Save']"))
