@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from datetime import datetime
+from selenium.common.exceptions import TimeoutException
 
 
 def change_month(int_bulan):
@@ -65,29 +66,41 @@ def change_format_date(date_string):
     }
 
 
+# def select_xpath(driver)
+
+
 def select_date(driver, date_string, xpath_date):
     wait = WebDriverWait(driver, 10)
-
+    header_wrap = ""
     date_obj = change_format_date(date_string)
+    try:
+        wait.until(EC.visibility_of_element_located((By.XPATH, xpath_date))).click()
+        WebDriverWait(driver, 1.5).until(
+            EC.visibility_of_element_located((By.XPATH, "/html/body/div[3]"))
+        )
+        header_wrap = "/html/body/div[3]/div[@class='header']"
+        wrapper = "/html/body/div[3]"
+    except TimeoutException:
+        header_wrap = "/html/body/div[2]/div[@class='header']"
+        wrapper = "/html/body/div[2]"
 
+    current_wrap = f"{header_wrap}/div[@class='current']"
     xpath = {
-        "tanggal_waktu_kejadian_terjadi": '//*[@id="content-container"]/div[3]/div/div/div/div/div/div/div/div/div/form/div[2]/div[1]/div/div/div/div/input',
-        "tanggal_waktu_kejadian_berakhir": '//*[@id="content-container"]/div[3]/div/div/div/div/div/div/div/div/div/form/div[2]/div[2]/div/div/div/div/input',
-        "tahun": "/html/body/div[2]/div[5]/div[2]/div[1]",
+        "year_wrap": "/html/body/div[3]/div[@class='header']/div[@class='current']/div[@class='year']",
+        "tahun2": "/html/body/div[2]/div[5]/div[2]/div[1]",
+        "tahun": f"{current_wrap}/div[@class='year']",
         "select_tahun": f"//div[@class='year-list-wrapper']/div[text()='{date_obj['year']}']",
-        "bulan": "/html/body/div[2]/div[5]/div[2]/div[2]",
-        "select_bulan": f"/html/body/div[2]/div[1]/div[text()='{date_obj['month']}']",
+        "bulan2": "/html/body/div[2]/div[5]/div[2]/div[2]",
+        "bulan": f"{current_wrap}/div[2]",
+        "select_bulan": f"//div[@class='month-list-wrapper']/div[text()='{date_obj['month']}']",
         "tanggal": "/html/body/div[2]/div[6]/div[2]",
-        "select_tanggal": f"/html/body/div[2]/div[6]/div[2]/div[text()='{date_obj['day']}']",
-        "simpan_tambah_kejadian": "//*[@id='content-container']/div[3]/div/div/div/div/div/div/div/div/div/form/div[14]/button",
-        "time": "/html/body/div[2]/div[7]/button[1]",
-        "hour": "/html/body/div[2]/div[6]/div[3]/div/div[1]/div[2]",
-        "select_hour": f"/html/body/div[2]/div[3]/div[text()='{date_obj['hour']}']",
-        "minute": "/html/body/div[2]/div[6]/div[3]/div/div[3]/div[2]",
-        "select_minute": f"/html/body/div[2]/div[4]/div[text()='{date_obj['minute']}']",
+        "select_tanggal": f"//div[@class='dates-wrapper']/div[text()='{date_obj['day']}']",
+        "time": f"{wrapper}/div[7]/button[1]",
+        "hour": f"{wrapper}/div[6]/div[3]/div/div[1]/div[2]",
+        "select_hour": f"//div[@class='hour-list-wrapper']/div[text()='{date_obj['hour']}']",
+        "minute": f"{wrapper}/div[6]/div[3]/div/div[3]/div[2]",
+        "select_minute": f"//div[@class='minute-list-wrapper']/div[text()='{date_obj['minute']}']",
     }
-
-    wait.until(EC.visibility_of_element_located((By.XPATH, xpath_date))).click()
 
     tahun = wait.until(EC.visibility_of_element_located((By.XPATH, xpath["tahun"])))
     tahun.click()
