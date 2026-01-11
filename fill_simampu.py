@@ -108,24 +108,18 @@ def isi_form_bpbd_sragen(data_obj):
                         (By.CSS_SELECTOR, "sb-oveflow-hidden")
                     )
                 )
-            elif key in sebaran_dampak:
+            if key in sebaran_dampak:
                 # 2. Klik untuk mengaktifkan dropdown
                 element.click()
-                try:
-                    # Cari item yang teksnya pas, lalu klik
+                for item in data_obj[key]:
+                    print(item)
                     wait.until(
                         EC.visibility_of_element_located(
-                            (By.XPATH, f"//li[.//text()='{data_obj[key]}']")
+                            (By.XPATH, f"//li[.//text()='{item}']")
                         )
                     ).click()
                     time.sleep(0.5)
-                    print(f"✅ Berhasil memilih (Eksak): {data_obj[key]}")
-                except:
-                    # Jika tidak ketemu teks eksak, coba gunakan simulasi ENTER sebagai cadangan
-                    print(
-                        f"⚠️ Teks eksak tidak ditemukan, mencoba ENTER untuk: {data_obj[key]}"
-                    )
-                    element.send_keys(Keys.ENTER)
+                    print(f"✅ Berhasil memilih (Eksak): {item}")
 
                 print(f"✅ Dropdown {key} berhasil diisi.")
                 time.sleep(0.5)
@@ -138,9 +132,9 @@ def isi_form_bpbd_sragen(data_obj):
             # Delay 0.5 detik sesuai permintaan
             time.sleep(0.5)
         print("\n✨ Proses selesai! Semua kolom telah terisi.")
-        wait.until(
-            EC.element_to_be_clickable((By.XPATH, xpath_map["simpan_tambah_kejadian"]))
-        ).click()
+        # wait.until(
+        #     EC.element_to_be_clickable((By.XPATH, xpath_map["simpan_tambah_kejadian"]))
+        # ).click()
 
     except Exception as e:
         print(f"❌ Error: {e}")
