@@ -108,8 +108,16 @@ try:
         "peringatan_dini": "NIHIL",
         "sebab_kejadian": "Hujan Disertai Angin Kencang",
         "deskripsi": "1 Pohon jenis Jati Roboh berdiameter 20 cm. Menghalangi jalan kampung.",
-        "sebaran_dampak_kec": ["Ngrampal", "Sragen"],
-        "sebaran_dampak_ds_kel": ["Bandung", "Sragen Wetan"],
+        "sebaran_dampak": [
+            {
+                "sebaran_dampak_kec": "Ngrampal",
+                "sebaran_dampak_ds_kel": ["Bandung"],
+            },
+            {
+                "sebaran_dampak_kec": "Sragen",
+                "sebaran_dampak_ds_kel": ["Sragen Tengah", "Sragen Wetan"],
+            },
+        ],
     }
     isi_form_bpbd_sragen(kejadian)
 except Exception as e:

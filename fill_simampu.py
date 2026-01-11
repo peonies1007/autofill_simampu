@@ -56,6 +56,7 @@ def isi_form_bpbd_sragen(data_obj):
             "peringatan_dini",
             "sebab_kejadian",
             "deskripsi",
+            "sebaran_dampak",
             "sebaran_dampak_kec",
             "sebaran_dampak_ds_kel",
         ]
@@ -73,14 +74,42 @@ def isi_form_bpbd_sragen(data_obj):
             "tanggal_waktu_kejadian_berakhir",
         ]
 
-        sebaran_dampak = [
+        sebaran_dampak_field = [
             "sebaran_dampak_kec",
             "sebaran_dampak_ds_kel",
         ]
 
         # 2. Gunakan JAVASCRIPT untuk memaksa masuknya nilai
         # Ini akan menimpa batasan 'readonly' dan menghindari munculnya kalender
+        for arr_wilayah in data_obj["sebaran_dampak"]:
+            for i, kec_desa in enumerate(arr_wilayah):
+                wait.until(
+                    EC.visibility_of_element_located(
+                        (By.XPATH, xpath_map[sebaran_dampak_field[i]])
+                    )
+                ).click()
+                print(arr_wilayah[kec_desa])
+                if kec_desa == sebaran_dampak_field[0]:
+                    wait.until(
+                        EC.visibility_of_element_located(
+                            (
+                                By.XPATH,
+                                f"//li[.//text()='{arr_wilayah[kec_desa]}']",
+                            )
+                        )
+                    ).click()
+                else:
+                    for desa in arr_wilayah[kec_desa]:
+                        wait.until(
+                            EC.visibility_of_element_located(
+                                (
+                                    By.XPATH,
+                                    f"//li[.//text()='{desa}']",
+                                )
+                            )
+                        ).click()
 
+        sys.exit(0)
         for key in all_fields:
             # SEMUA menggunakan EC.element_to_be_clickable
             element = wait.until(EC.element_to_be_clickable((By.XPATH, xpath_map[key])))
@@ -108,21 +137,22 @@ def isi_form_bpbd_sragen(data_obj):
                         (By.CSS_SELECTOR, "sb-oveflow-hidden")
                     )
                 )
-            if key in sebaran_dampak:
-                # 2. Klik untuk mengaktifkan dropdown
-                element.click()
-                for item in data_obj[key]:
-                    print(item)
-                    wait.until(
-                        EC.visibility_of_element_located(
-                            (By.XPATH, f"//li[.//text()='{item}']")
-                        )
-                    ).click()
-                    time.sleep(0.5)
-                    print(f"✅ Berhasil memilih (Eksak): {item}")
 
-                print(f"✅ Dropdown {key} berhasil diisi.")
-                time.sleep(0.5)
+            # if key in sebaran_dampak:
+            #     # 2. Klik untuk mengaktifkan dropdown
+            #     element.click()
+            #     for item in data_obj[key]:
+            #         print(item)
+            #         wait.until(
+            #             EC.visibility_of_element_located(
+            #                 (By.XPATH, f"//li[.//text()='{item}']")
+            #             )
+            #         ).click()
+            #         time.sleep(0.5)
+            #         print(f"✅ Berhasil memilih (Eksak): {item}")
+
+            #     print(f"✅ Dropdown {key} berhasil diisi.")
+            #     time.sleep(0.5)
             else:
                 # Input untuk elemen <input> biasa
                 element.clear()
@@ -131,6 +161,7 @@ def isi_form_bpbd_sragen(data_obj):
 
             # Delay 0.5 detik sesuai permintaan
             time.sleep(0.5)
+
         print("\n✨ Proses selesai! Semua kolom telah terisi.")
         # wait.until(
         #     EC.element_to_be_clickable((By.XPATH, xpath_map["simpan_tambah_kejadian"]))
