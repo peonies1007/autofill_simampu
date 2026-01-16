@@ -151,6 +151,8 @@ def tambah_krs_krg(driver, data_obj):
                     )
                     element.send_keys(Keys.CONTROL, "a")  # Select all text
                     element.send_keys(Keys.DELETE)
+                    element.send_keys(Keys.CONTROL, "A")  # Select all text
+                    element.send_keys(Keys.DELETE)
                     time.sleep(0.2)
                     element.send_keys(
                         value_data_krs_krg["kategori"][key_kategori][val_key_kategori]
