@@ -1,3 +1,4 @@
 a.py
 *.env
 __pycache__
+*json

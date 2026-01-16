@@ -12,7 +12,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 
 kejadian_obj = {
-    "waktu_penanganan": "2026-01-08 17:42:00",
+    "waktu_penanganan_terkondisi": "2026-01-08 17:42:00",
     "sumber_informasi": "Tim Respon Cepat",
     "kondisi_mutakhir_dropdown": "Kondusif",
     "kondisi_mutakhir_deskripsi": "Pohon sudah dievakuasi",
@@ -36,7 +36,7 @@ def tambah_informasi_terkini(driver, kejadian):
 
     xpathmap = {
         "btn_tambah_informasi_terkini": '//*[@id="content-container"]/div[3]/div/section[1]/div/div/div/div[1]/button',
-        "waktu_penanganan": "/html/body/div[2]/div[2]/div/div/div/form/div[1]/div/div/div/input",
+        "waktu_penanganan_terkondisi": "/html/body/div[2]/div[2]/div/div/div/form/div[1]/div/div/div/input",
         "sumber_informasi": "/html/body/div[2]/div[2]/div/div/div/form/div[3]/div/div/input",
         "kondisi_mutakhir_dropdown": "/html/body/div[2]/div[2]/div/div/div/form/div[5]/div/div/div/div/input",
         "kondisi_mutakhir_deskripsi": "/html/body/div[2]/div[2]/div/div/div/form/div[7]/div/div/div/div[1]",
@@ -47,7 +47,7 @@ def tambah_informasi_terkini(driver, kejadian):
         "btn_simpan": "/html/body/div[2]/div[2]/div/div/div/form/button",
     }
     all_fields = [
-        "waktu_penanganan",
+        "waktu_penanganan_terkondisi",
         "sumber_informasi",
         "kondisi_mutakhir_dropdown",
         "kondisi_mutakhir_deskripsi",
@@ -73,7 +73,7 @@ def tambah_informasi_terkini(driver, kejadian):
             element = wait.until(
                 EC.visibility_of_element_located((By.XPATH, xpathmap[key]))
             )
-            if key == "waktu_penanganan":
+            if key == "waktu_penanganan_terkondisi":
                 select_date(driver, kejadian[key], xpathmap[key])
 
             elif key == "sumber_informasi":
