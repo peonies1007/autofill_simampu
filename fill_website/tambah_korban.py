@@ -1,22 +1,9 @@
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support import expected_conditions as EC
 import time
 from selenium.webdriver.common.by import By
 import sys
-from select_date import select_date
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.service import Service
-
-chrome_options = Options()
-chrome_options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
-
-driver = webdriver.Chrome(
-    service=Service(ChromeDriverManager().install()), options=chrome_options
-)
+from auto_fill_simampu.logic.select_date import select_date
 
 data_kejadian = [
     {
@@ -83,8 +70,7 @@ xpathmap = {
 xpath_kj = xpathmap["tambah_korban_jiwa"]
 
 
-def kelola_dampak(driver, data_obj):
-    # driver.get("https://simampu.bnpb.go.id/de/events_disaster/3314104202601082/show")
+def tambah_korban(driver, data_obj):
     print("🚀 Membuka halaman data kejadian...")
     wait = WebDriverWait(driver, 10)
 
@@ -106,45 +92,44 @@ def kelola_dampak(driver, data_obj):
         "dampak_kecamatan",
         "dampak_ds_kelurahan",
     ]
-
-    for value_korban in data_obj:
-        btn_tambah_korban_jiwa = wait.until(
-            EC.visibility_of_element_located(
-                (By.XPATH, xpath_kj["btn_tambah_korban_jiwa"])
-            )
-        )
-        btn_tambah_korban_jiwa.click()
-        time.sleep(0.5)
-        for key in all_field:
-            element = wait.until(
-                EC.visibility_of_element_located((By.XPATH, xpath_kj[key]))
-            )
-            time.sleep(0.2)
-            if key in field_sebaran_dampak:
-                element.click()
-                wait.until(
-                    EC.visibility_of_element_located(
-                        (
-                            By.XPATH,
-                            f"//div/span[text()='{value_korban[key]}']",
-                        )
-                    )
-                ).click()
-
-            elif key == "dampak_tgl_waktu":
-                select_date(driver, value_korban[key], xpath_kj[key])
-            elif value_korban[key]:
-                element.click()
-                element.send_keys(value_korban[key])
-        sys.exit(0)
-        wait.until(
-            EC.visibility_of_element_located(
-                (
-                    By.XPATH,
-                    xpath_kj["btn_close"],
+    try:
+        for value_korban in data_obj:
+            btn_tambah_korban_jiwa = wait.until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, xpath_kj["btn_tambah_korban_jiwa"])
                 )
             )
-        ).click()
+            btn_tambah_korban_jiwa.click()
+            time.sleep(0.5)
+            for key in all_field:
+                element = wait.until(
+                    EC.visibility_of_element_located((By.XPATH, xpath_kj[key]))
+                )
+                time.sleep(0.2)
+                if key in field_sebaran_dampak:
+                    element.click()
+                    wait.until(
+                        EC.visibility_of_element_located(
+                            (
+                                By.XPATH,
+                                f"//div/span[text()='{value_korban[key]}']",
+                            )
+                        )
+                    ).click()
 
-
-kelola_dampak(driver, data_kejadian)
+                elif key == "dampak_tgl_waktu":
+                    select_date(driver, value_korban[key], xpath_kj[key])
+                elif value_korban[key]:
+                    element.click()
+                    element.send_keys(value_korban[key])
+            sys.exit(0)
+            wait.until(
+                EC.visibility_of_element_located(
+                    (
+                        By.XPATH,
+                        xpath_kj["btn_close"],
+                    )
+                )
+            ).click()
+    except Exception as e:
+        print("Error", e)

@@ -1,15 +1,8 @@
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support import expected_conditions as EC
 import time
 from selenium.webdriver.common.by import By
-import sys
-from select_date import select_date
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.service import Service
+from auto_fill_simampu.logic.select_date import select_date
 
 kejadian_obj = {
     "waktu_penanganan_terkondisi": "2026-01-08 17:42:00",
@@ -21,12 +14,6 @@ kejadian_obj = {
     "kendala_lapangan": "Nihil",
     "informasi_tambahan": "Nihil",
 }
-chrome_options = Options()
-chrome_options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
-
-driver = webdriver.Chrome(
-    service=Service(ChromeDriverManager().install()), options=chrome_options
-)
 
 
 def tambah_informasi_terkini(driver, kejadian):
@@ -105,6 +92,3 @@ def tambah_informasi_terkini(driver, kejadian):
         time.sleep(5)
     except Exception as e:
         print(f"❌ Error: {e}")
-
-
-tambah_informasi_terkini(driver, kejadian_obj)

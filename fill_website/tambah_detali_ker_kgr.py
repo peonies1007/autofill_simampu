@@ -1,16 +1,7 @@
-from select_date import select_date
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support import expected_conditions as EC
 import time
 from selenium.webdriver.common.by import By
-import sys
-from select_date import select_date
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.keys import Keys
 
 kejadian = [
@@ -37,12 +28,6 @@ kejadian = [
         "deskripsi": "1 Pohon Jati Diameter -+ 20 Cm Tumbang Menghalangi Jalan Kampung",
     },
 ]
-chrome_options = Options()
-chrome_options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
-
-driver = webdriver.Chrome(
-    service=Service(ChromeDriverManager().install()), options=chrome_options
-)
 
 
 def tambah_detail_ker_keg(driver, data_obj):
@@ -120,6 +105,3 @@ def tambah_detail_ker_keg(driver, data_obj):
     #     EC.visibility_of_element_located((By.XPATH, xpathmap["btn_simpan"]))
     # )
     # btn_simpan.click()
-
-
-tambah_detail_ker_keg(driver, kejadian)

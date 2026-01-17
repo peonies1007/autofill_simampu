@@ -1,9 +1,9 @@
 import tkinter as tk
 from tkinter import messagebox
-from scrap_data import scrap_data
+from auto_fill_simampu.logic.scrap_data import scrap_data
 from components import loading_components, custom_askyesno
 from confirm_text import confirm_text
-from laporan_teks_dump import LAPORAN_TEKS
+from auto_fill_simampu.dump_data.laporan_teks_dump import LAPORAN_TEKS
 
 # from tkinter import ttk
 from tkinter import scrolledtext

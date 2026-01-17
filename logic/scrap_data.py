@@ -2,9 +2,9 @@ from google import genai
 import json
 import os
 from dotenv import load_dotenv
-from fill_simampu import isi_form_bpbd_sragen
-from data_kejadian_dump import DATA_KEJADIAN_DUMP as target_schema
-from auto_fill_simampu.laporan_teks_dump import LAPORAN_TEKS as laporan_teks
+from auto_fill_simampu.dump_data.data_kejadian_dump import (
+    DATA_KEJADIAN_DUMP as target_schema,
+)
 
 load_dotenv()
 # 2. Konfigurasi Client Gemini
@@ -100,55 +100,37 @@ def get_disaster_object(laporan):
         return None
 
 
-# Eksekusi
-try:
-    print("Sedang memproses data dengan Gemini AI...")
-    result_data = get_disaster_object(laporan_teks)
+def scrap_data(laporan):
+    # Eksekusi
+    try:
+        print("Sedang memproses data dengan Gemini AI...")
+        result_data = get_disaster_object(laporan)
 
-    if result_data:
-        # ---------------------------------------------------------
-        # CARA 1: MENYIMPAN KE FILE JSON
-        # ---------------------------------------------------------
-        nama_file_json = "hasil_insiden.json"
+        if result_data:
+            # ---------------------------------------------------------
+            # CARA 1: MENYIMPAN KE FILE JSON
+            # ---------------------------------------------------------
+            nama_file_json = "hasil_insiden.json"
 
-        with open(nama_file_json, "w", encoding="utf-8") as f:
-            # ensure_ascii=False agar karakter Indonesia terbaca normal
-            json.dump(result_data, f, indent=4, ensure_ascii=False)
+            with open(nama_file_json, "w", encoding="utf-8") as f:
+                # ensure_ascii=False agar karakter Indonesia terbaca normal
+                json.dump(result_data, f, indent=4, ensure_ascii=False)
 
-        print(f"\n[SUKSES] Data berhasil disimpan ke file: {nama_file_json}")
+            print(f"\n[SUKSES] Data berhasil disimpan ke file: {nama_file_json}")
 
-        # ---------------------------------------------------------
-        # CARA 2: MENGAKSES DATA DI PYTHON (READ BACK)
-        # ---------------------------------------------------------
-        print(
-            "\n[INFO] Mencoba membaca kembali file untuk memastikan format Python benar..."
-        )
+            # ---------------------------------------------------------
+            # CARA 2: MENGAKSES DATA DI PYTHON (READ BACK)
+            # ---------------------------------------------------------
+            print(
+                "\n[INFO] Mencoba membaca kembali file untuk memastikan format Python benar..."
+            )
 
-        # Buka file yang baru saja dibuat
-        with open(nama_file_json, "r", encoding="utf-8") as f:
-            data_loaded = json.load(f)
+            # Buka file yang baru saja dibuat
+            with open(nama_file_json, "r", encoding="utf-8") as f:
+                data_loaded = json.load(f)
 
-    print(data_loaded)
-    kejadian = {
-        "nama_kejadian": "Cuaca Ekstrem di Kabupaten Sragen Provinsi Jawa Tengah",
-        "tanggal_waktu_kejadian_terjadi": "2026-01-08 17:15:00",
-        "tanggal_waktu_kejadian_berakhir": "2026-01-08 18:00:00",
-        "jenis_bencana": "Cuaca Ekstrem",
-        "kronologi": "Pada Hari Kamis, 8 Januari 2026 Sekitar pukul ± 16.00 WIB wilayah Kab.Sragen Dan Sekitarnya di guyur Hujan intensitas Sedang Hingga Deras disertai angin Kencang yang Mengakibatkan  Pohon Tumbang Menutup Akses Jalan Kampung",
-        "peringatan_dini": "NIHIL",
-        "sebab_kejadian": "Hujan Disertai Angin Kencang",
-        "deskripsi": "1 Pohon jenis Jati Roboh berdiameter 20 cm. Menghalangi jalan kampung.",
-        "sebaran_dampak": [
-            {
-                "sebaran_dampak_kec": "Ngrampal",
-                "sebaran_dampak_ds_kel": ["Bandung"],
-            },
-            {
-                "sebaran_dampak_kec": "Sragen",
-                "sebaran_dampak_ds_kel": ["Sragen Tengah", "Sragen Wetan"],
-            },
-        ],
-    }
-    # isi_form_bpbd_sragen(kejadian)
-except Exception as e:
-    print(f"Terjadi kesalahan: {e}")
+        return True, data_loaded
+        # isi_form_bpbd_sragen(kejadian)
+    except Exception as e:
+        print(f"Terjadi kesalahan: {e}")
+        return False, e

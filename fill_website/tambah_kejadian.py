@@ -1,31 +1,33 @@
-import time
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.common.keys import Keys
-import sys
-from delete_data_dump import delete_data_dump
-from select_date import select_date
+import time
+from auto_fill_simampu.logic.select_date import select_date
+
+kejadian = {
+    "nama_kejadian": "Cuaca Ekstrem di Kabupaten Sragen Provinsi Jawa Tengah",
+    "tanggal_waktu_kejadian_terjadi": "2026-01-08 17:15:00",
+    "tanggal_waktu_kejadian_berakhir": "2026-01-08 18:00:00",
+    "jenis_bencana": "Cuaca Ekstrem",
+    "kronologi": "Pada Hari Kamis, 8 Januari 2026 Sekitar pukul ± 16.00 WIB wilayah Kab.Sragen Dan Sekitarnya di guyur Hujan intensitas Sedang Hingga Deras disertai angin Kencang yang Mengakibatkan  Pohon Tumbang Menutup Akses Jalan Kampung",
+    "peringatan_dini": "NIHIL",
+    "sebab_kejadian": "Hujan Disertai Angin Kencang",
+    "deskripsi": "1 Pohon jenis Jati Roboh berdiameter 20 cm. Menghalangi jalan kampung.",
+    "sebaran_dampak": [
+        {
+            "sebaran_dampak_kec": "Ngrampal",
+            "sebaran_dampak_ds_kel": ["Bandung"],
+        },
+        {
+            "sebaran_dampak_kec": "Sragen",
+            "sebaran_dampak_ds_kel": ["Sragen Tengah", "Sragen Wetan"],
+        },
+    ],
+}
 
 
-def isi_form_bpbd_sragen(data_obj):
-    # 1. Koneksi ke browser yang sudah terbuka (Remote Debugging)
-    chrome_options = Options()
-    chrome_options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
-
-    driver = webdriver.Chrome(
-        service=Service(ChromeDriverManager().install()), options=chrome_options
-    )
-
-    # delete_data_dump(driver)
-    # sys.exit(0)
-    # 2. Buka URL Target (Ganti dengan URL formulir Anda)
-    # driver.get("https://simampu.bnpb.go.id/de/events_disaster_create")
-    print("🚀 Membuka halaman formulir...")
+def tambah_kejadian(driver, data_obj):
+    print("🚀 Membuka halaman Tambah Kejadian...")
     wait = WebDriverWait(driver, 10)
     # 2. XPATH Map sesuai data yang Anda berikan
     xpath_map = {
@@ -147,6 +149,5 @@ def isi_form_bpbd_sragen(data_obj):
         # wait.until(
         #     EC.element_to_be_clickable((By.XPATH, xpath_map["simpan_tambah_kejadian"]))
         # ).click()
-
     except Exception as e:
         print(f"❌ Error: {e}")

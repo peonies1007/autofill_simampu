@@ -1,27 +1,12 @@
-from select_date import select_date
+from auto_fill_simampu.logic.select_date import select_date
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support import expected_conditions as EC
 import time
 from selenium.webdriver.common.by import By
-import sys
-from select_date import select_date
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.service import Service
-from xpath_krs_krg import xpathmap
-from data_krs_krg import data_krs_krg
+from auto_fill_simampu.constants.xpath_krs_krg import xpathmap
+# from auto_fill_simampu.dump_data_krs_krg import data_krs_krg
 
 from selenium.webdriver.common.keys import Keys
-
-chrome_options = Options()
-chrome_options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
-
-driver = webdriver.Chrome(
-    service=Service(ChromeDriverManager().install()), options=chrome_options
-)
 
 
 def tambah_krs_krg(driver, data_obj):
@@ -108,7 +93,7 @@ def tambah_krs_krg(driver, data_obj):
         ],
         "hewan_ternak": ["total_hewan", "rugi_hewan"],
     }
-    for value_data_krs_krg in data_krs_krg:
+    for value_data_krs_krg in data_obj:
         btn_tambah = wait.until(
             EC.visibility_of_element_located(
                 (By.XPATH, xpathmap["btn_tambah_kerusakan_kerugian"])
@@ -158,11 +143,11 @@ def tambah_krs_krg(driver, data_obj):
                         value_data_krs_krg["kategori"][key_kategori][val_key_kategori]
                     )
                     time.sleep(0.2)
-        btn_simpan = wait.until(
-            EC.visibility_of_element_located(
-                (By.XPATH, xpathmap["btn_simpan_dampak_terkini"])
-            )
-        )
+        # btn_simpan = wait.until(
+        #     EC.visibility_of_element_located(
+        #         (By.XPATH, xpathmap["btn_simpan_dampak_terkini"])
+        #     )
+        # )
 
         wait.until(
             EC.visibility_of_element_located(
@@ -171,6 +156,3 @@ def tambah_krs_krg(driver, data_obj):
         ).click()
 
         # btn_simpan.click()
-
-
-tambah_krs_krg(driver, data_krs_krg)
