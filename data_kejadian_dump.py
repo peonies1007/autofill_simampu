@@ -29,19 +29,21 @@ DATA_KEJADIAN_DUMP = {
             }
         ],
         "kelola_dampak_terkini": {
-            "tambah_korban_jiwa": {
-                "dampak_kecamatan": "",
-                "dampak_ds_kelurahan": "",
-                "dampak_tgl_waktu": "",
-                "total_kk": "",
-                "terdampak_orang": "",
-                "meninggal_orang": "",
-                "hilang_orang": "",
-                "luka_ringan_orang": "",
-                "luka_berat_orang": "",
-                "mengungsi_orang": "",
-                "titik_pengungsian": "",
-            },
+            "tambah_korban_jiwa": [
+                {
+                    "dampak_kecamatan": "",
+                    "dampak_ds_kelurahan": "",
+                    "dampak_tgl_waktu": "",
+                    "total_kk": "",
+                    "terdampak_orang": "",
+                    "meninggal_orang": "",
+                    "hilang_orang": "",
+                    "luka_ringan_orang": "",
+                    "luka_berat_orang": "",
+                    "mengungsi_orang": "",
+                    "titik_pengungsian": "",
+                }
+            ],
             "tambah_kerusakan_dan_kerugian": [
                 {
                     "kerusakan_kerugian_kecamatan": "",

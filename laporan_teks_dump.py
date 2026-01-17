@@ -3,7 +3,7 @@ LAPORAN KEJADIAN BPBD KABUPATEN SRAGEN*
 
 *Mohon Ijin Melaporkan Dengan Hormat :*
 
-1. Hari                             : Kamis
+1. Hari\t:\t Kamis
 2. Tanggal                      : 8 Januari 2026 
 3. Waktu Kejadian         : 17.15 WIB
 4. Waktu Laporan          : 17.30 WIB 
@@ -22,6 +22,8 @@ LAPORAN KEJADIAN BPBD KABUPATEN SRAGEN*
 
 *Lokasi Kejadian* 
 1. Kamp. Widoro , RT. 41/12, Kel.Sragen Wetan, Kec. Sragen, Kab. Sragen
+2. Kelurahan Karangtengah, Kec. Sragen
+3. Ds. Celep, Kec. Kedawung
 
 *Identitas Pemilik Pohon* :
 - Nama : Satimin
@@ -30,6 +32,10 @@ LAPORAN KEJADIAN BPBD KABUPATEN SRAGEN*
 
 *Kerusakan* :
 - 1 Pohon Jati Diameter -+ 20 Cm Tumbang Menghalangi Jalan Kampung
+- 1 Rumah Rusak Ringan, Kelurahan Karangtengah
+- 2 Rumah Terendam banjir, Ds. Celep
+- 4 Hewan mati, kelurahan sragen wetan
+- 1 Fasilitas Umum, Kel. Karangtengah
 
 *Kerugian*
 - ± Rp. 500.000, ( Lima Ratus Ribu Rupiah)
@@ -38,7 +44,8 @@ LAPORAN KEJADIAN BPBD KABUPATEN SRAGEN*
 - Hujan Disertai Angin Kencang
 
 *Bantuan Medis*
-- Nihil
+- 1 Korban Luka Ringan, Kel. Karangtengah, Kec. Sragen
+- 1 Korban Luka Berat, Ds. Celep, Kec. Kedawung
 
 *Pengungsi*
 - Nihil 

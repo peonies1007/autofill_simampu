@@ -21,17 +21,16 @@ def select_all_text(event):
 
 def show_info():
     laporan_teks = laporan.get("1.0", "end-1c")
-    custom_askyesno("Konfirmasi", laporan_teks)
-    # is_success, data = loading_components(scrap_data, laporan_teks)
-    # text_confirm = confirm_text(data)
-    # if is_success:
-    #     confirm = messagebox.askyesno("Konfirmasi Laporan", f"Sukses: {text_confirm}")
-    #     if confirm:
-    #         messagebox.showinfo("judul", "Sukses")
-    #     else:
-    #         pass
-    # else:
-    #     messagebox.showerror("Error", f"Terjadi error: {data}")
+    is_success, data = loading_components(scrap_data, laporan_teks)
+    text_confirm = confirm_text(data)
+    if is_success:
+        confirm = custom_askyesno("Konfirmasi Laporan", f"Sukses: {text_confirm}")
+        if confirm:
+            messagebox.showinfo("judul", "Sukses")
+        else:
+            pass
+    else:
+        messagebox.showerror("Error", f"Terjadi error: {data}")
 
 
 tk.Label(

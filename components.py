@@ -112,6 +112,7 @@ def custom_askyesno(title, text):
         bg="#f0f0f0",  # (Opsional) Samakan warna dengan background window
         padx=10,
         pady=10,
+        tabs=(265, 267),
     )
 
     # 3. Masukkan teks ke dalam widget
