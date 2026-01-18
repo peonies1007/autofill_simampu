@@ -2,7 +2,7 @@ from google import genai
 import json
 import os
 from dotenv import load_dotenv
-from auto_fill_simampu.dump_data.data_kejadian_dump import (
+from dump_data.data_kejadian_dump import (
     DATA_KEJADIAN_DUMP as target_schema,
 )
 

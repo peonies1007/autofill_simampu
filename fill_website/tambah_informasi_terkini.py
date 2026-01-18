@@ -2,7 +2,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 from selenium.webdriver.common.by import By
-from auto_fill_simampu.logic.select_date import select_date
+from logic.select_date import select_date
 
 kejadian_obj = {
     "waktu_penanganan_terkondisi": "2026-01-08 17:42:00",

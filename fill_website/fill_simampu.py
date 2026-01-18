@@ -4,8 +4,8 @@ from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
 # from delete_data_dump import delete_data_dump
-from fill_website.tambah_kejadian import tambah_kejadian
-from fill_website.kelola_dampak import kelola_dampak
+from .tambah_kejadian import tambah_kejadian
+from .kelola_dampak import kelola_dampak
 
 
 def isi_form_bpbd_sragen(data_obj):
@@ -21,6 +21,10 @@ def isi_form_bpbd_sragen(data_obj):
     # sys.exit(0)
     # 2. Buka URL Target (Ganti dengan URL formulir Anda)
     # driver.get("https://simampu.bnpb.go.id/de/events_disaster_create")
-
-    tambah_kejadian(driver, data_obj)
-    kelola_dampak(driver, data_obj)
+    try:
+        tambah_kejadian(driver, data_obj)
+        kelola_dampak(driver, data_obj)
+        return True, "Sukses Mengisi Simampu"
+    except Exception as e:
+        print(e)
+        return False, f"Error : {e}"

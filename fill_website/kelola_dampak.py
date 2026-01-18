@@ -1,7 +1,7 @@
-from tambah_korban import tambah_korban
-from tambah_kerusakan_kerugian import tambah_krs_krg
-from tambah_informasi_terkini import tambah_informasi_terkini
-from tambah_detali_ker_kgr import tambah_detail_ker_keg
+from .tambah_korban import tambah_korban
+from .tambah_kerusakan_kerugian import tambah_krs_krg
+from .tambah_informasi_terkini import tambah_informasi_terkini
+from .tambah_detali_ker_kgr import tambah_detail_ker_keg
 
 
 def kelola_dampak(driver, data_obj):

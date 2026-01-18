@@ -1,9 +1,10 @@
 import tkinter as tk
 from tkinter import messagebox
-from auto_fill_simampu.logic.scrap_data import scrap_data
+from logic.scrap_data import scrap_data
 from components import loading_components, custom_askyesno
 from confirm_text import confirm_text
-from auto_fill_simampu.dump_data.laporan_teks_dump import LAPORAN_TEKS
+from dump_data.laporan_teks_dump import LAPORAN_TEKS
+from fill_website.fill_simampu import isi_form_bpbd_sragen
 
 # from tkinter import ttk
 from tkinter import scrolledtext
@@ -25,10 +26,16 @@ def show_info():
     text_confirm = confirm_text(data)
     if is_success:
         confirm = custom_askyesno("Konfirmasi Laporan", f"Sukses: {text_confirm}")
-        if confirm:
-            messagebox.showinfo("judul", "Sukses")
-        else:
-            pass
+        # if confirm:cd
+        #     is_success_fill, msg = loading_components(isi_form_bpbd_sragen, data)
+        #     if is_success_fill:
+        #         messagebox.showinfo("Sukses", msg)
+        #     else:
+        #         messagebox.showerror(
+        #             "Error", f"Terjadi error saat mengisis Simampu: {msg}"
+        #         )
+        # else:
+        #     pass
     else:
         messagebox.showerror("Error", f"Terjadi error: {data}")
 

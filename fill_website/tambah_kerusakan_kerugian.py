@@ -1,9 +1,9 @@
-from auto_fill_simampu.logic.select_date import select_date
+from logic.select_date import select_date
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 from selenium.webdriver.common.by import By
-from auto_fill_simampu.constants.xpath_krs_krg import xpathmap
+from constants.xpath_krs_krg import xpathmap
 # from auto_fill_simampu.dump_data_krs_krg import data_krs_krg
 
 from selenium.webdriver.common.keys import Keys
