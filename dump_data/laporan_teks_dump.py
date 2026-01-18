@@ -30,6 +30,23 @@ LAPORAN KEJADIAN BPBD KABUPATEN SRAGEN*
 - Umur : 60 Tahun
 - Alamat : Dk. Bandung Sogo, Ds. Bandung, Kec. Ngrampal
 
+*Identitas Pemilik Rumah rusak* :
+- Nama : Darmawan
+- Umur : 60 Tahun
+
+*Identitas Pemilik Hewan* :
+- Nama : Sakinah
+- Umur : 60 Tahun
+
+*Identitas Pemilik Rumah Banjir* :
+- Nama : Robert
+- Umur : 60 Tahun
+
+*Identitas Pemilik Rumah Banjir* :
+- Nama : Kurniawan
+- Umur : 60 Tahun
+
+
 *Kerusakan* :
 - 1 Pohon Jati Diameter -+ 20 Cm Tumbang Menghalangi Jalan Kampung
 - 1 Rumah Rusak Ringan, Kelurahan Karangtengah

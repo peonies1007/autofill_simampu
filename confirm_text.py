@@ -6,6 +6,7 @@ from constants.key_kategori import (
 )
 
 # List 1 space 5
+list_0 = "   "
 list_1 = "     "
 # List 2 space 8
 list_2 = "        "
@@ -45,9 +46,9 @@ def get_korban_jiwa(array_data):
         {"under": "mengungsi_orang", "no_under": "Mengungsi"},
         {"under": "titik_pengungsian", "no_under": "Titik Penungsian"},
     ]
+    text += "===KELOLA DAMPAK TERKINI===\n"
     for data in array_data:
         if data:
-            text += "===KELOLA DAMPAK TERKINI===\n"
             array_korban_teks = []
             korban_teks = ""
             for key in array_dict_korban:
@@ -70,10 +71,12 @@ def get_korban_jiwa(array_data):
 
 def get_kerusakan_kerugian(data_array):
     text = ""
+    text += "=TAMBAH KERUSAKAN DAN KERUGIAN=\n"
     for data in data_array:
         text += f"=Kel/Ds. {data['kerusakan_kerugian_ds_kelurahan']}, Kec. {data['kerusakan_kerugian_kecamatan']}=\n"
-        text += f"1. Kelurahan\t:\t{data['kerusakan_kerugian_kecamatan']}\n"
-        text += f"2. Kelurahan\t:\t{data['kerusakan_kerugian_kecamatan']}\n"
+        text += f"1. Kecamatan\t:\t{data['kerusakan_kerugian_kecamatan']}\n"
+        text += f"2. Kelurahan / Desa\t:\t{data['kerusakan_kerugian_ds_kelurahan']}\n"
+        index = 0
 
         for key_kategori in KATEGORI:
             head_kategori = []
@@ -89,11 +92,34 @@ def get_kerusakan_kerugian(data_array):
                         value_kategori_text += (
                             f"{list_1}- {KATEGORI_HEWAN[j]}\t:\t{value}\n"
                         )
-
-            for k, item in enumerate(head_kategori):
-                print(k)
-                text += f"{k + 3}. {item.replace('_', ' ').title()}\n"
+            for item in head_kategori:
+                text += f"{index + 3}. {item.replace('_', ' ').title()}\n"
                 text += value_kategori_text
+                index += 1
+        text += "\n"
+    return text
+
+
+def get_detail_ker_krg(data_array):
+    text = ""
+    field = [
+        # "nama_kerusakan",
+        "nama_pemilik",
+        "kategori",
+        "kerusakan",
+        "luasan_terdampak",
+        "satuan_luasan",
+        "kerugian",
+        "alamat",
+        "deskripsi",
+    ]
+    text += "=TAMBAH DETAIL KERUSAKAN DAN KERUGIAN=\n"
+    for i, data in enumerate(data_array):
+        text += f"{i + 1}. Kerusakan\t:\t{data['nama_kerusakan']}\n"
+        for key in field:
+            if data[key]:
+                text += f"{list_0} {key.replace('_', ' ').title()}\t:\t{data[key]}\n"
+        text += "\n"
 
     return text
 
@@ -134,4 +160,5 @@ DATA PENGISIAN SIMAMPU BPBD KABUPATEN SRAGEN*
 ===TAMBAH INFORMASI TERKINI==={get_informasi_terkini(tambah_informasi_terkini)}
 {get_korban_jiwa(tambah_korban_jiwa)}
 {get_kerusakan_kerugian(tambah_kerusakan_dan_kerugian)}
+{get_detail_ker_krg(tambah_detail_ker_krg)}
 """
