@@ -5,6 +5,7 @@ from components import loading_components, custom_askyesno
 from confirm_text import confirm_text
 from dump_data.laporan_teks_dump import LAPORAN_TEKS
 from fill_website.fill_simampu import isi_form_bpbd_sragen
+from dump_data.dump_data_kejadian import DUMP_DATA
 
 # from tkinter import ttk
 from tkinter import scrolledtext
@@ -22,22 +23,23 @@ def select_all_text(event):
 
 def show_info():
     laporan_teks = laporan.get("1.0", "end-1c")
-    is_success, data = loading_components(scrap_data, laporan_teks)
-    text_confirm = confirm_text(data)
-    if is_success:
-        confirm = custom_askyesno("Konfirmasi Laporan", f"Sukses: {text_confirm}")
-        # if confirm:cd
-        #     is_success_fill, msg = loading_components(isi_form_bpbd_sragen, data)
-        #     if is_success_fill:
-        #         messagebox.showinfo("Sukses", msg)
-        #     else:
-        #         messagebox.showerror(
-        #             "Error", f"Terjadi error saat mengisis Simampu: {msg}"
-        #         )
-        # else:
-        #     pass
-    else:
-        messagebox.showerror("Error", f"Terjadi error: {data}")
+    # is_success, data = loading_components(scrap_data, laporan_teks)
+    text_confirm = confirm_text(DUMP_DATA)
+    confirm = custom_askyesno("Konfirmasi Laporan", f"Sukses: {text_confirm}")
+    # if is_success:
+    #     confirm = custom_askyesno("Konfirmasi Laporan", f"Sukses: {text_confirm}")
+    # if confirm:
+    #     is_success_fill, msg = loading_components(isi_form_bpbd_sragen, data)
+    #     if is_success_fill:
+    #         messagebox.showinfo("Sukses", msg)
+    #     else:
+    #         messagebox.showerror(
+    #             "Error", f"Terjadi error saat mengisis Simampu: {msg}"
+    #         )
+    # else:
+    #     pass
+    # else:
+    #     messagebox.showerror("Error", f"Terjadi error: {data}")
 
 
 tk.Label(

@@ -47,56 +47,63 @@ def get_korban_jiwa(array_data):
         {"under": "titik_pengungsian", "no_under": "Titik Penungsian"},
     ]
     text += "===KELOLA DAMPAK TERKINI===\n"
+    text += "==TAMBAH KORBAN JIWA==\n"
+
+    index = 0
     for data in array_data:
         if data:
             array_korban_teks = []
             korban_teks = ""
             for key in array_dict_korban:
                 if data[key["under"]]:
-                    if int(data[key["under"]]):
+                    if data[key["under"]]:
                         array_korban_teks.append(key)
 
-            for i, item in enumerate(array_korban_teks):
+            for item in array_korban_teks:
                 korban_teks += (
-                    f"{i + 3}. {item['no_under']}\t:\t{data[item['under']]}\n"
+                    f"{list_0} {item['no_under']}\t:\t{data[item['under']]}\n"
                 )
-
-            text += f"""=KEL/DS. {data["dampak_ds_kelurahan"]}, KEC. {data["dampak_kecamatan"]}=
-1. Dampak Kecamatan\t:\t{data["dampak_kecamatan"]}
-2. Dampak Desa / Kelurahan\t:\t{data["dampak_ds_kelurahan"]} 
-{korban_teks}
-"""
+            text += f"{index + 1}. Kecamatan\t:\t{data['dampak_kecamatan']}\n"
+            text += f"{list_0} Desa / Kelurahan\t:\t{data['dampak_ds_kelurahan']}\n"
+            text += korban_teks
+        index += 1
     return text
 
 
 def get_kerusakan_kerugian(data_array):
     text = ""
-    text += "=TAMBAH KERUSAKAN DAN KERUGIAN=\n"
+    text += "==TAMBAH KERUSAKAN DAN KERUGIAN==\n"
+    index = 0
     for data in data_array:
-        text += f"=Kel/Ds. {data['kerusakan_kerugian_ds_kelurahan']}, Kec. {data['kerusakan_kerugian_kecamatan']}=\n"
-        text += f"1. Kecamatan\t:\t{data['kerusakan_kerugian_kecamatan']}\n"
-        text += f"2. Kelurahan / Desa\t:\t{data['kerusakan_kerugian_ds_kelurahan']}\n"
-        index = 0
+        text += f"{index + 1}. Kecamatan\t:\t{data['kerusakan_kerugian_kecamatan']}\n"
+        text += (
+            f"{list_0} Kelurahan / Desa\t:\t{data['kerusakan_kerugian_ds_kelurahan']}\n"
+        )
 
         for key_kategori in KATEGORI:
-            head_kategori = []
             value_kategori_text = ""
+            head_kategori = []
             for j, key_field_kategori in enumerate(FIELD_KATEGORI[key_kategori]):
                 value = data["kategori"][key_kategori][key_field_kategori]
                 if value:
-                    head_kategori.append(key_kategori)
-                    value_kategori_text += (
-                        f"{list_1}- {KATEGORI_RUSAK[j]}\t:\t{value}\n"
-                    )
+                    if key_kategori not in head_kategori:
+                        head_kategori.append(key_kategori)
                     if key_kategori == "hewan_ternak":
                         value_kategori_text += (
                             f"{list_1}- {KATEGORI_HEWAN[j]}\t:\t{value}\n"
                         )
+                    else:
+                        value_kategori_text += (
+                            f"{list_1}- {KATEGORI_RUSAK[j]}\t:\t{value}\n"
+                        )
             for item in head_kategori:
-                text += f"{index + 3}. {item.replace('_', ' ').title()}\n"
+                text += f"{list_0} {item.replace('_', ' ').title()}\n"
                 text += value_kategori_text
-                index += 1
+        if data["kerugian_total"]:
+            text += f"{list_0} Kerugian Total\t:\t{data['kerugian_total']}\n"
         text += "\n"
+        index = +1
+
     return text
 
 
@@ -113,7 +120,7 @@ def get_detail_ker_krg(data_array):
         "alamat",
         "deskripsi",
     ]
-    text += "=TAMBAH DETAIL KERUSAKAN DAN KERUGIAN=\n"
+    text += "==TAMBAH DETAIL KERUSAKAN DAN KERUGIAN==\n"
     for i, data in enumerate(data_array):
         text += f"{i + 1}. Kerusakan\t:\t{data['nama_kerusakan']}\n"
         for key in field:

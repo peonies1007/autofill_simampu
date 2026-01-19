@@ -48,14 +48,16 @@ LAPORAN KEJADIAN BPBD KABUPATEN SRAGEN*
 
 
 *Kerusakan* :
-- 1 Pohon Jati Diameter -+ 20 Cm Tumbang Menghalangi Jalan Kampung
+- 1 Pohon Jati Diameter -+ 20 Cm Tumbang Menghalangi Jalan Sragen Wetan
 - 1 Rumah Rusak Ringan, Kelurahan Karangtengah
 - 2 Rumah Terendam banjir, Ds. Celep
 - 4 Hewan mati, kelurahan sragen wetan
 - 1 Fasilitas Umum, Kel. Karangtengah
 
 *Kerugian*
-- ± Rp. 500.000, ( Lima Ratus Ribu Rupiah)
+- ± Rp. 500.000, ( Lima Ratus Ribu Rupiah) pohon
+- Rp. 2.000.000 Rumah rusak ringan
+- 4 Hewan mati Rp. 4.000.000
 
 *Penyebab Kejadian*
 - Hujan Disertai Angin Kencang

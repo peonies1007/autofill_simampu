@@ -2,7 +2,7 @@ from google import genai
 import json
 import os
 from dotenv import load_dotenv
-from dump_data.data_kejadian_dump import (
+from dump_data.key_kejadian_dump import (
     DATA_KEJADIAN_DUMP as target_schema,
 )
 
@@ -28,7 +28,10 @@ def get_disaster_object(laporan):
     9. sebaran_dampak (List):
        - sebaran_dampak_kec: Hanya nama Kecamatannya saja (contoh: "Sragen").
        - sebaran_dampak_ds_kel(List): Hanya nama Desa/Kelurahannya saja (contoh: ["Sragen Tengah", "Sragen Wetan"]).
-       (Buat item baru dalam list jika kejadian di banyak lokasi).
+       (Buat item baru dalam list jika kejadian di banyak lokasi. 1 item hanya satu kecamatan. Contoh : 
+            sebaran_dampak_kec : "Sragen",
+            sebaran_dampak_ds_kel : ["Sragen Tengah", "Sragen Wetan"]
+       ).
     10. gambar: Biarkan kosong "".
 
     B. DETAIL & INFORMASI (tambah_informasi_terkini)
@@ -53,6 +56,7 @@ def get_disaster_object(laporan):
     - Apabila kerusakan merupakan pohon jangan masukkan ke kategori manapun namun hanya masukkan kerugiannya saja
     - rusak_..._ringan/sedang/berat: Isi dengan JUMLAH UNIT (angka).
     - Contoh: "2 rumah rusak berat" -> masukkan "2" ke field rusak_rumah_rusak_berat.
+    - hewan_ternak : isi hanya total hewan dan kerugian saja, tidak ada kategori rusak ringan, sedang atau berat.
     
     E. DETAIL KERUSAKAN DAN KERUGIAN (tambah_detail_ker_krg)
     - Ini adalah LIST. Buat 1 objek per pemilik bangunan, lahan, atau pohon
