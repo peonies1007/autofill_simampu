@@ -95,13 +95,12 @@ def tambah_detail_ker_keg(driver, data_obj):
                     element.send_keys(Keys.DELETE)
                     element.send_keys(item[key])
                 time.sleep(0.2)
-    wait.until(
-        EC.visibility_of_element_located(
-            (By.XPATH, "/html/body/div[2]/div[2]/div/button")
-        )
-    ).click()
-    # btn_simpan.click()
-    # btn_simpan = wait.until(
-    #     EC.visibility_of_element_located((By.XPATH, xpathmap["btn_simpan"]))
-    # )
-    # btn_simpan.click()
+    # wait.until(
+    #     EC.visibility_of_element_located(
+    #         (By.XPATH, "/html/body/div[2]/div[2]/div/button")
+    #     )
+    # ).click()
+    btn_simpan = wait.until(
+        EC.visibility_of_element_located((By.XPATH, xpathmap["btn_simpan"]))
+    )
+    btn_simpan.click()

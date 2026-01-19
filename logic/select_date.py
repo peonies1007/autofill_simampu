@@ -43,7 +43,7 @@ def change_month(int_bulan):
 
 def change_format_date(date_string):
     # Mengonversi string menjadi objek datetime
-    dt_object = datetime.strptime(date_string, "%Y-%m-%d %H:%M:%S")
+    dt_object = datetime.strptime(date_string, "%Y-%m-%d %H:%M")
 
     month = change_month(dt_object.month)
     hour = ""

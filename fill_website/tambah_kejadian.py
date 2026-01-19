@@ -4,7 +4,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 from logic.select_date import select_date
 
-kejadian = {
+kejadian_dump = {
     "nama_kejadian": "Cuaca Ekstrem di Kabupaten Sragen Provinsi Jawa Tengah",
     "tanggal_waktu_kejadian_terjadi": "2026-01-08 17:15:00",
     "tanggal_waktu_kejadian_berakhir": "2026-01-08 18:00:00",
@@ -146,8 +146,8 @@ def tambah_kejadian(driver, data_obj):
                         ).click()
             time.sleep(0.2)
         print("\n✨ Proses selesai! Semua kolom telah terisi.")
-        # wait.until(
-        #     EC.element_to_be_clickable((By.XPATH, xpath_map["simpan_tambah_kejadian"]))
-        # ).click()
+        wait.until(
+            EC.element_to_be_clickable((By.XPATH, xpath_map["simpan_tambah_kejadian"]))
+        ).click()
     except Exception as e:
         print(f"❌ Error: {e}")

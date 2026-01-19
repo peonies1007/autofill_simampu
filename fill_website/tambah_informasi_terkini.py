@@ -4,7 +4,7 @@ import time
 from selenium.webdriver.common.by import By
 from logic.select_date import select_date
 
-kejadian_obj = {
+kejadian_obj_dump = {
     "waktu_penanganan_terkondisi": "2026-01-08 17:42:00",
     "sumber_informasi": "Tim Respon Cepat",
     "kondisi_mutakhir_dropdown": "Kondusif",

@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
+from delete_data_dump import delete_data_dump
 
 # from delete_data_dump import delete_data_dump
 from .tambah_kejadian import tambah_kejadian
@@ -17,13 +18,12 @@ def isi_form_bpbd_sragen(data_obj):
         service=Service(ChromeDriverManager().install()), options=chrome_options
     )
 
-    # delete_data_dump(driver)
-    # sys.exit(0)
+    delete_data_dump(driver)
     # 2. Buka URL Target (Ganti dengan URL formulir Anda)
-    # driver.get("https://simampu.bnpb.go.id/de/events_disaster_create")
+    driver.get("https://simampu.bnpb.go.id/de/events_disaster_create")
     try:
-        tambah_kejadian(driver, data_obj)
-        kelola_dampak(driver, data_obj)
+        tambah_kejadian(driver, data_obj["tambah_kejadian"])
+        kelola_dampak(driver, data_obj["detail_kejadian"])
         return True, "Sukses Mengisi Simampu"
     except Exception as e:
         print(e)

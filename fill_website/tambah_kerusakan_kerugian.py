@@ -143,16 +143,15 @@ def tambah_krs_krg(driver, data_obj):
                         value_data_krs_krg["kategori"][key_kategori][val_key_kategori]
                     )
                     time.sleep(0.2)
-        # btn_simpan = wait.until(
-        #     EC.visibility_of_element_located(
-        #         (By.XPATH, xpathmap["btn_simpan_dampak_terkini"])
-        #     )
-        # )
-
-        wait.until(
+        btn_simpan = wait.until(
             EC.visibility_of_element_located(
-                (By.XPATH, "/html/body/div[2]/div[2]/div/button")
+                (By.XPATH, xpathmap["btn_simpan_dampak_terkini"])
             )
-        ).click()
+        )
+        btn_simpan.click()
 
-        # btn_simpan.click()
+        # wait.until(
+        #     EC.visibility_of_element_located(
+        #         (By.XPATH, "/html/body/div[2]/div[2]/div/button")
+        #     )
+        # ).click()

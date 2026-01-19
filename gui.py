@@ -23,21 +23,27 @@ def select_all_text(event):
 
 def show_info():
     laporan_teks = laporan.get("1.0", "end-1c")
+    is_success_fill, msg = loading_components(isi_form_bpbd_sragen, DUMP_DATA)
+    if is_success_fill:
+        messagebox.showinfo("Sukses", msg)
+    else:
+        messagebox.showerror("Error", f"Terjadi error saat mengisi Simampu: {msg}")
+
     # is_success, data = loading_components(scrap_data, laporan_teks)
-    text_confirm = confirm_text(DUMP_DATA)
-    confirm = custom_askyesno("Konfirmasi Laporan", f"Sukses: {text_confirm}")
+    # text_confirm = confirm_text(data)
+
     # if is_success:
     #     confirm = custom_askyesno("Konfirmasi Laporan", f"Sukses: {text_confirm}")
-    # if confirm:
-    #     is_success_fill, msg = loading_components(isi_form_bpbd_sragen, data)
-    #     if is_success_fill:
-    #         messagebox.showinfo("Sukses", msg)
+    #     if confirm:
+    #         is_success_fill, msg = loading_components(isi_form_bpbd_sragen, data)
+    #         if is_success_fill:
+    #             messagebox.showinfo("Sukses", msg)
+    #         else:
+    #             messagebox.showerror(
+    #                 "Error", f"Terjadi error saat mengisis Simampu: {msg}"
+    #             )
     #     else:
-    #         messagebox.showerror(
-    #             "Error", f"Terjadi error saat mengisis Simampu: {msg}"
-    #         )
-    # else:
-    #     pass
+    #         pass
     # else:
     #     messagebox.showerror("Error", f"Terjadi error: {data}")
 

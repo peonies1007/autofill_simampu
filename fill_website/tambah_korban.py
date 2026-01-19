@@ -2,10 +2,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 from selenium.webdriver.common.by import By
-import sys
 from logic.select_date import select_date
 
-data_kejadian = [
+data_kejadian_dump = [
     {
         "dampak_kecamatan": "Sragen",
         "dampak_ds_kelurahan": "Sragen Tengah",
@@ -122,12 +121,19 @@ def tambah_korban(driver, data_obj):
                 elif value_korban[key]:
                     element.click()
                     element.send_keys(value_korban[key])
-            sys.exit(0)
+            # wait.until(
+            #     EC.visibility_of_element_located(
+            #         (
+            #             By.XPATH,
+            #             xpath_kj["btn_close"],
+            #         )
+            #     )
+            # ).click()
             wait.until(
                 EC.visibility_of_element_located(
                     (
                         By.XPATH,
-                        xpath_kj["btn_close"],
+                        xpath_kj["btn_simpan_korban_jiwa"],
                     )
                 )
             ).click()
